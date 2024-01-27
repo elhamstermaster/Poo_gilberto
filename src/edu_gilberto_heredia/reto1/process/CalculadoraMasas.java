@@ -21,30 +21,30 @@ public class CalculadoraMasas {
 
     public static String clasificarIndiceMasaCorporal(double imc) {
         String valorImc = " ";
-
+        //Comparando IMCs
         if(imc < 18.9){
-            valorImc = "Tu IMC denota un peso bajo.";
+            valorImc = "Denota un peso bajo.";
         }
         else if(imc >= 18.9 && imc <= 24.99){
-            valorImc = "Tu IMC denota un peso normal.";
+            valorImc = "Denota un peso normal.";
         }
         else if(imc >= 25 && imc <= 29.99){
-            valorImc = "Tu IMC denota sobrepeso.";
+            valorImc = "Denota sobrepeso.";
         }
         else if(imc >= 30 && imc <= 34.99){
-            valorImc = "Tu IMC denota obesidad leve.";
+            valorImc = "Denota obesidad leve.";
         }
         else if(imc >= 35 && imc <= 39.99){
-            valorImc = "Tu IMC denota sobrepeso.";
+            valorImc = "Denota sobrepeso.";
         }
         else if(imc >= 40){
-            valorImc = "Tu IMC denota obesidad mórbida.";
+            valorImc = "Denota obesidad mórbida.";
         }
         return valorImc;
     }
 
     //Masas magras, decidí no crear otra clase debido a que estas también son masas. Aunque pude hacerlo con el
-    // metabolismo basal, por organización hice otro archivo de clase.
+    // metabolismo basal, opté por organización hacer otro archivo de clase.
 
         public static double calcularMasaMagraHombre(double pesoHombreMagra, double estaturaHombreMagra) {
             // Fórmula para calcular la masa magra en hombres según Boer

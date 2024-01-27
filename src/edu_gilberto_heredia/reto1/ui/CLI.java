@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 import static edu_gilberto_heredia.reto1.process.CalculadoraMasas.clasificarIndiceMasaCorporal;
 
-//Command Line Interface
+//Command Line Interface, Interfaz
 public class CLI {
-    public static void mostrarMenu(){ //Método arranca la aplicación, código limpio, usar verbo
+    public static void mostrarMenu(){ //Método arranca la aplicación, código limpio, usar verbos
         //Interfaz, menú
         System.out.println(
                 """
@@ -23,11 +23,11 @@ public class CLI {
     public static void selectAgain(){
         System.out.println("¿Deseas seleccionar otro cálculo? s/n");
         Scanner selectAgainScanner = new Scanner(System.in);
-        char selectAgain = selectAgainScanner.next().charAt(0);
+        char selectAgain = selectAgainScanner.next().toLowerCase().charAt(0); //Para que pase los mayus a minus
                         switch(selectAgain)
         {
             case 's':
-                CLI.launchCalculadoraMasas();
+                launchCalculadoraMasas();
                 break;
             case 'n':
                 System.out.println("OK. Fin de la aplicación.");
@@ -36,13 +36,15 @@ public class CLI {
                 System.out.println("Escribe s o n");
         }
     }
+
+
     //Método público, estático, accedidos desde otras fuentes
         public static void launchCalculadoraMasas(){
             //Leer la elección
             Scanner opcionScanner = new Scanner(System.in);
 
             mostrarMenu();
-            char opcion = opcionScanner.next().charAt(0); //Checar para tolowercase
+            char opcion = opcionScanner.next().toUpperCase().charAt(0); //De minus a mayus
             switch(opcion)
             {
                 case 'A':
@@ -60,7 +62,8 @@ public class CLI {
                     double imc = CalculadoraMasas.calcularIndiceMasaCorporal(peso, estatura);
                     String estado = clasificarIndiceMasaCorporal(imc); //uso el valor calculado del imc como argumento para arrojar el método clasificatorio
 
-                    System.out.println("Tu IMC es " + imc + ". " + estado);
+
+                    System.out.printf("Tu IMC es %.2f. %s \n", imc, estado);
                     selectAgain();
                     break;
 
@@ -68,8 +71,9 @@ public class CLI {
                     //B. Cálculo de masa corporal magra
                     Scanner masaMagraScanner = new Scanner(System.in);
                     System.out.println("¿Cuál es tu sexo? h/m");
-                    char masaMagraSexo = masaMagraScanner.next().charAt(0);
+                    char masaMagraSexo = masaMagraScanner.next().toLowerCase().charAt(0);
 
+                    //En caso de hombre
                     if(masaMagraSexo == 'h') {
                         System.out.println("Teclea tu peso en kg.");
                         double pesoHombreMagra = masaMagraScanner.nextDouble();
@@ -79,9 +83,12 @@ public class CLI {
 
                         double masaMagraHombre = CalculadoraMasas.calcularMasaMagraHombre(pesoHombreMagra, estaturaHombreMagra);
 
-                        System.out.println("Tu masa corporal magra es: " + masaMagraHombre + ".");
+                        System.out.printf("Tu masa corporal magra es de %.2f kg. \n", masaMagraHombre);
+                        //Aprendí esto de ChatGPT y otras páginas donde explican el uso de %.2%n para doble decimal
+                        //y salto de línea
                     }
 
+                    //En caso de mujer
                     if(masaMagraSexo == 'm') {
                         System.out.println("Teclea tu peso en kg.");
                         double pesoMujerMagra = masaMagraScanner.nextDouble();
@@ -91,7 +98,7 @@ public class CLI {
 
                         double masaMagraMujer = CalculadoraMasas.calcularMasaMagraMujer(pesoMujerMagra, estaturaMujerMagra);
 
-                        System.out.println("Tu masa corporal magra es: " + masaMagraMujer + ".");
+                        System.out.printf("Tu masa corporal magra es %.2f kg. \n", masaMagraMujer);
                     }
                     selectAgain();
                     break;
@@ -100,7 +107,7 @@ public class CLI {
                     //C. Cálculo de metabolismo basal
                     Scanner metabolismoBasalScanner = new Scanner(System.in);
                     System.out.println("¿Cuál es tu sexo? h/m");
-                    char metabolismoBasalSexo = metabolismoBasalScanner.next().charAt(0);
+                    char metabolismoBasalSexo = metabolismoBasalScanner.next().toLowerCase().charAt(0);
 
                     //Hombre
                     if(metabolismoBasalSexo == 'h') {
@@ -115,7 +122,8 @@ public class CLI {
 
                         double metabolismoBasalHombre = MetabolismoBasal.calcularMetabolismoBasalHombre(pesoHombreMetabolismoBasal, estaturaHombreMetabolismoBasal, edadMetabolismoBasal);
 
-                        System.out.println("El resultado de tu índice metabólico es: " + metabolismoBasalHombre + " Joules.");
+                        System.out.printf("El resultado de tu índice metabólico es de: %.2f calorías.%n", metabolismoBasalHombre);
+
                     }
 
                     //Mujer
@@ -131,7 +139,7 @@ public class CLI {
 
                         double metabolismoBasalMujer = MetabolismoBasal.calcularMetabolismoBasalMujer(pesoMujerMetabolismoBasal, estaturaMujerMetabolismoBasal, edadMetabolismoBasal);
 
-                        System.out.println("El resultado de tu índice metabólico es: " + metabolismoBasalMujer + " Joules.");
+                        System.out.printf("El resultado de tu índice metabólico es de: %.2f calorías.%n", metabolismoBasalMujer);
                     }
                     selectAgain();
                     break;
