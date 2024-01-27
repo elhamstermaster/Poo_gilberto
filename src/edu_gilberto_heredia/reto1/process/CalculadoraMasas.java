@@ -21,7 +21,7 @@ public class CalculadoraMasas {
 
     public static String clasificarIndiceMasaCorporal(double imc) {
         String valorImc = " ";
-        //Comparando IMCs
+        //Comparando IMCs.
         if(imc < 18.9){
             valorImc = "Denota un peso bajo.";
         }

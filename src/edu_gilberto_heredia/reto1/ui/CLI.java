@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static edu_gilberto_heredia.reto1.process.CalculadoraMasas.clasificarIndiceMasaCorporal;
 
-//Command Line Interface, Interfaz
+//Command Line Interface, Interfaz.
 public class CLI {
     public static void mostrarMenu(){ //Método arranca la aplicación, código limpio, usar verbos
         //Interfaz, menú
