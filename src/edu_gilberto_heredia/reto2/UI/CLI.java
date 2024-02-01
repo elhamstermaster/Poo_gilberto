@@ -1,6 +1,5 @@
 package edu_gilberto_heredia.reto2.UI;
 import edu_gilberto_heredia.reto2.process.CalculadoraCompraVentaCajas;
-
 import java.util.Scanner;
 
 public class CLI {
