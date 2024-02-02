@@ -10,7 +10,4 @@ public class CalculadoraCompraVentaCajas { //ver si puedo reducir esto y lo otro
 
 }
 
-class OpcionC{
 
-
-}
