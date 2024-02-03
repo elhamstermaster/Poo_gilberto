@@ -1,17 +1,39 @@
+/**
+ * Esta clase sirve para efectuar toda operación necesaria (no solo matemática) del
+ * programa de compra y venta.
+ *
+ * Clase que calcula
+ *
+ * @param costoCaja        Cada caja cuesta $50 MXN.
+ * @param monto            Hay $10,000 MXN en la caja registradora, que también pueden usarse
+ *                         para comprar al proveedor.
+ *
+ * @param egresosCompras   Cuenta del efectivo invertido, egresos de cajas compradas.
+ * @param ingresosVentas   Cuenta del efectivo ganado, ingresos de cajas vendidas.
+ *
+ * Conteo de las acciones efectuadas a lo largo del programa:
+ * @param numVentas        Número total de ventas.
+ * @param numCompras       Número total de compras.
+ * @param numOperaciones   Cantidad total de operaciones realizadas.
+ */
+
 package edu_gilberto_heredia.reto2.process;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-import static edu_gilberto_heredia.reto2.UI.CLI.launchCalculadoraCompraVenta;
+import static edu_gilberto_heredia.reto2.UI.CLI.launchProgramaCompraVenta;
 
 public class OperacionesCaja {
 
+    //Operaciones de la caja usadas en CLI
+    //Declaro acá variables estáticas que se me ocurieron, para usar en CLI
     public static double costoCaja = 50, monto = 10_000;
     public static double egresosCompras, ingresosVentas;
     public static int numVentas, numCompras;
     public static int numOperaciones;
 
+    //Fórmula del costo de una compra y un pedido
     public static double sacarCostoCompraCajas(double cajasPorComprar, double costoCaja) {
         return cajasPorComprar * costoCaja;
     }
@@ -20,6 +42,7 @@ public class OperacionesCaja {
         return cajasPorVender * costoCaja;
     }
 
+    //Si se selecciona la opcion a
     public static void comprarCajas() {
         Scanner numCompraScanner = new Scanner(System.in);
         Scanner confirmarScannerA = new Scanner(System.in);
@@ -44,15 +67,16 @@ public class OperacionesCaja {
                     selectAgain();
                     break;
                 case 'n':
-                    launchCalculadoraCompraVenta();
+                    launchProgramaCompraVenta();
                     break;
                 default:
                     System.out.println("Opción no válida.");
+                    comprarCajas();
             }
         } catch (InputMismatchException e) {
             System.out.println("Error: Ingresa un número entero válido.");
             numCompraScanner.next(); // Limpia el búfer de entrada
-            launchCalculadoraCompraVenta();
+            launchProgramaCompraVenta();
         } finally {
             // Cierra los Scanners manualmente
             numCompraScanner.close();
@@ -60,6 +84,8 @@ public class OperacionesCaja {
         }
     }
 
+
+    //Si se selecciona la opcion b
     public static void venderCajas() {
         Scanner numVentaScanner = new Scanner(System.in);
         Scanner confirmarScannerB = new Scanner(System.in);
@@ -82,15 +108,16 @@ public class OperacionesCaja {
                     selectAgain();
                     break;
                 case 'n':
-                    launchCalculadoraCompraVenta();
+                    launchProgramaCompraVenta();
                     break;
                 default:
                     System.out.println("Opción no válida.");
+                    venderCajas();
             }
         } catch (InputMismatchException e) {
             System.out.println("Error: Ingresa un número entero válido.");
             numVentaScanner.next(); // Limpia el búfer de entrada
-            launchCalculadoraCompraVenta();
+            launchProgramaCompraVenta();
         } finally {
             // Cierra los Scanners manualmente
             numVentaScanner.close();
@@ -98,37 +125,10 @@ public class OperacionesCaja {
         }
     }
 
-    public static void selectAgain() {
-        Scanner selectAgainScanner = new Scanner(System.in);
-
-        try {
-            System.out.println("¿Deseas seleccionar otro cálculo? s/n");
-            char selectAgain = selectAgainScanner.next().toLowerCase().charAt(0);
-
-            switch (selectAgain) {
-                case 's':
-                    launchCalculadoraCompraVenta();
-                    break;
-                case 'n':
-                    mostrarResumenFinal();
-                    System.out.println("OK. Fin de la aplicación.");
-                    break;
-                default:
-                    System.out.println("Escribe s o n");
-                    selectAgain();
-            }
-        } catch (InputMismatchException e) {
-            System.out.println("Error: Ingresa un carácter válido.");
-            selectAgainScanner.next(); // Limpia el búfer de entrada
-            launchCalculadoraCompraVenta();
-        } finally {
-            // Cierra el Scanner manualmente
-            selectAgainScanner.close();
-        }
-    }
-
+    //Opción c
     public static void mostrarReporte() {
         System.out.printf("""
+                
                 Estás consultando los siguientes datos.
                 1-Número total de ventas: %d.
                 2-Número total de compras: %d.
@@ -138,17 +138,57 @@ public class OperacionesCaja {
                 """, numVentas, numCompras, ingresosVentas, egresosCompras, monto);
     }
 
+    //Opción d y n
     public static void mostrarResumenFinal() {
         numOperaciones = numVentas + numCompras;
         System.out.printf("""
+                
                 Se muestran las acciones realizadas:
+                ------------------------------------------------------
                 La cantidad total de operaciones realizadas: %d.
-                Total de ventas: %d.
-                Total de compras: %d.
-                Monto en la caja: $%.2f MXN.
-                Los ingresos generados por ventas: $%.2f MXN.
-                Egresos de compras: $%.2f MXN.
+                ------------------------------------------------------
+                Total de ventas:                             %d.
+                ------------------------------------------------------
+                Total de compras:                            %d.
+                ------------------------------------------------------
+                Monto en la caja:                            $%.2f MXN.
+                ------------------------------------------------------
+                Los ingresos generados por ventas:           $%.2f MXN.
+                ------------------------------------------------------
+                Egresos de compras:                          $%.2f MXN.
+                ------------------------------------------------------
                 Gracias por usar este servicio, vuelve pronto.
                 """, numOperaciones, numVentas, numCompras, monto, ingresosVentas, egresosCompras);
     }
+
+    //Después de ejecutar una opción, si el usuario desea seguir con otro cálculo
+    public static void selectAgain() {
+        Scanner selectAgainScanner = new Scanner(System.in);
+
+        try {
+            System.out.println("¿Deseas seleccionar otro cálculo? s/n");
+            char selectAgain = selectAgainScanner.next().toLowerCase().charAt(0);
+
+            switch (selectAgain) {
+                case 's':
+                    launchProgramaCompraVenta();
+                    break;
+                case 'n':
+                    mostrarResumenFinal();
+                    break;
+                default:
+                    System.out.println("Escribe s o n");
+                    selectAgain();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Ingresa un carácter válido.");
+            selectAgainScanner.next(); // Limpia el búfer de entrada
+            launchProgramaCompraVenta();
+        } finally {
+            //Cierra el Scanner manualmente
+            selectAgainScanner.close();
+        }
+    }
+
+
 }
