@@ -4,7 +4,6 @@ import edu_gilberto_heredia.reto2.process.OperacionesCaja;
 
 import java.util.Scanner;
 
-//Command Line Interface
 public class CLI {
     //Menú de acceso.
     public static void mostrarMenuAcceso() {
