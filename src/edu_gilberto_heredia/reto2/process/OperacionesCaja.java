@@ -1,7 +1,6 @@
 /**
  * Esta clase sirve para efectuar toda operación necesaria (no solo matemática) del
  * programa de compra y venta.
- *
  * Clase que calcula
  *
  * @param costoCaja        Cada caja cuesta $50 MXN.
@@ -10,7 +9,6 @@
  *
  * @param egresosCompras   Cuenta del efectivo invertido, egresos de cajas compradas.
  * @param ingresosVentas   Cuenta del efectivo ganado, ingresos de cajas vendidas.
- *
  * Conteo de las acciones efectuadas a lo largo del programa:
  * @param numVentas        Número total de ventas.
  * @param numCompras       Número total de compras.
