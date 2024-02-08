@@ -6,7 +6,7 @@ public class Main {
         try {
             CLI.launchMenuDiccionario();
         } catch (Exception e) {
-            System.out.println("Error inesperado... " + e);
+            System.out.println("Error inesperado. " + e);
         }
     }
 }

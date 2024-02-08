@@ -23,6 +23,9 @@ public class CLI {
                     System.out.println("Tu diccionario está conformado por 10 palabras.");
                     Diccionario.enlistarPalabrasA();
                     break;
+                case 'B':
+                    Diccionario.buscarCapturarSignificadosB();
+                    break;
             }
     }
 }
