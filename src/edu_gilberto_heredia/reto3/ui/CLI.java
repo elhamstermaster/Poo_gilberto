@@ -5,7 +5,7 @@ import edu_gilberto_heredia.reto3.process.Diccionario;
 import java.util.Scanner;
 
 public class CLI {
-    public static void launchMenuDiccionario(){
+    public static void launchMenuDiccionario(){//
         System.out.println("""
                 -----Bienvenido al menú de tu diccionario personal-----
                 A. Enlistar palabras del diccionario.
