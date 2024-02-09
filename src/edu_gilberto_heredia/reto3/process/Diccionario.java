@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 
 public class Diccionario {
+    //Private string...?
     public static String[] palabras = new String[10]; //Array de 10 casillas, contadas del 0 al 9.
                                                //Para accesibilidad.
-
+    public static String[] significados = new String[10];
 
     public static void enlistarPalabrasA() {
         //Para ver la opción de decirle al usuario que su diccionario está lleno ya.
@@ -25,7 +26,6 @@ public class Diccionario {
 
 
     public static void buscarCapturarSignificadosB(){
-        String[] significados = new String [10]; //Array de 10 significados
         if (palabras[0] == null){
             System.out.println("No has llenado tu diccionario de palabras.");
             emptyA();
@@ -33,7 +33,7 @@ public class Diccionario {
         else{
             System.out.println("Estas son las palabras almacenadas en tu diccionario personal:");
             for (int i = 0; i < 10; i++) {
-                System.out.println("Palabra " + (i + 1) + ": " + palabras[i]); //Igual...
+                System.out.println((i + 1) + ": " + palabras[i]); //Igual...
                 //Solo hice static el array de palabras porque se hará uso de eso que es externo aquí.
             }
         }
@@ -49,58 +49,72 @@ public class Diccionario {
         Scanner darSignificadoScanner =  new Scanner(System.in);
         String palabraElegida = darSignificadoScanner.next();
 
+
         for (int i = 0; i < 10; i++) {
             if (palabraElegida.equalsIgnoreCase(palabras[i])) {
                 //Acciones específicas para la palabra encontrada en la posición i
-                System.out.println("Se encontró la palabra: " + palabras[i]);
+                System.out.println("Se encontró la palabra: " + "\"" + palabras[i] + "\"");
 
-                Scanner lectorSignificados = new Scanner(System.in);
-                for (i = 0; i < 10; i++) {
+                Scanner sigScanner = new Scanner(System.in);
                     System.out.println("Ingresa el significado de la palabra " + "\"" + palabras[i] + "\"" + ":"); //Despliega la palabra directamente
-                    significados[i] = lectorSignificados.next(); //La casilla 0 es igual a la lectura y así va...
+                    significados[i] = sigScanner.next();
+                System.out.println("Significado de la palabra " + palabras[i] + " procesado. Elige una opción.\n" +
+                        "a. Ingresar otro significado.\n" +
+                        "b. Regresar al menú.");
+
+                char otroSigScanner = sigScanner.next().toLowerCase().charAt(0);
+                if(otroSigScanner == 'a'){
+                    buscarCapturarSignificadosB();
+                }
+                else if(otroSigScanner == 'b'){
+                    CLI.launchMenuDiccionario();
                 }
 
+                if(!palabraElegida.equalsIgnoreCase(palabras[i])){
+                    System.out.println("Teclea una palabra que esté presente, por favor.");
+                    buscarCapturarSignificadosB();
+                }
+
+            }//if dentro de for
+
+        }//for
+
+    }
+
+    public static void detallarC(){ //Falta retocar, el ciclo for puede dar problemas, quiero que salga el print primero en caso de ser validada
+                                    //la opción, y que si no es válida, saque un mensaje de error y redirija, el ciclo for ostruye eso un poco.
+        // Imprimir palabra, definición y num de letras de cada palabra
+        for (int i = 0; i < 10; i++) {
+            if (palabras[i] != null && significados[i] != null) {
+                int numeroLetras = palabras[i].length();
+                System.out.println((i + 1) + ": " + palabras[i] + " - "  + significados[i] + " - " + numeroLetras + ".");
+            }
+            else if(palabras[i] == null || significados[i] == null){
+                CLI.launchMenuDiccionario();
             }
         }
 
-        // Si llega aquí, significa que no se encontró la palabra en el array
-        System.out.println("La palabra no existe en el diccionario.");
-
-
-
     }
-
-    //public static void detallarC
-
-    /*
-    private static String capitalizarPrimeraLetra(String palabra) {
-        return palabra.substring(0, 1).toUpperCase() + palabra.substring(1);
-    }
-    */
 
 
     public static void emptyA(){ //Si se selecciona B y A no ha sido llenado.
-            Scanner emptyAScanner = new Scanner(System.in);
-            try {
-                System.out.println("¿Deseas enlistar tus palabras con la opción 'A'? s/n");
-                char emptyA = emptyAScanner.next().toLowerCase().charAt(0);
+        try (Scanner emptyAScanner = new Scanner(System.in)) {
+            System.out.println("¿Deseas enlistar tus palabras con la opción 'A'? s/n");
+            char emptyA = emptyAScanner.next().toLowerCase().charAt(0);
 
-                switch (emptyA) {
-                    case 's':
-                        Diccionario.enlistarPalabrasA();
-                        break;
-                    case 'n':
-                        CLI.launchMenuDiccionario();
-                        break;
-                    default:
-                        System.out.println("Escribe s o n");
-                        emptyA();
-                }
+            switch (emptyA) {
+                case 's':
+                    Diccionario.enlistarPalabrasA();
+                    break;
+                case 'n':
+                    CLI.launchMenuDiccionario();
+                    break;
+                default:
+                    System.out.println("Escribe s o n");
+                    emptyA();
             }
-            finally {
-                //Cierra el Scanner manualmente
-                emptyAScanner.close();
-            }
+        }
+        //Cierra el Scanner manualmente
     }
 
     public static void filledA(){
@@ -110,5 +124,6 @@ public class Diccionario {
     public static void palabraElegida(){
 
     }
+
 
 }
