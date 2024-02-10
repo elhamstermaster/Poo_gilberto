@@ -5,97 +5,112 @@ import edu_gilberto_heredia.reto3.ui.CLI;
 import java.util.Scanner;
 
 
-public class Diccionario {
-    //Private string...?
+public class Diccionario { //Clase del diccionario con respectivos métodos de opción y otro en caso de tener vacío el listado.
+
     public static String[] palabras = new String[10]; //Array de 10 casillas, contadas del 0 al 9.
                                                //Para accesibilidad.
     public static String[] significados = new String[10];
 
-    public static void enlistarPalabrasA() {
-        //Para ver la opción de decirle al usuario que su diccionario está lleno ya.
+    public static int i = 0;
 
+    public static void enlistarPalabrasA() { //Opción A
         Scanner lectorPalabras = new Scanner(System.in);
         for (int i = 0; i < 10; i++) {
-            System.out.println("Ingresa la palabra " + (i + 1) + ":"); //Simula debido a que es texto, pero no suma
+            System.out.println("Ingresa la palabra #" + (i + 1) + ":"); //Simula debido a que es texto, pero no suma
                                                                        // directamente hasta las siguientes líneas.
             palabras[i] = lectorPalabras.next(); //La casilla 0 es igual a la lectura y así va...
         }
+        System.out.println();
         CLI.launchMenuDiccionario();
-
     }
 
 
-    public static void buscarCapturarSignificadosB(){
-        if (palabras[0] == null){
+    public static void buscarCapturarSignificadosB() { //Opción B
+        boolean diccionarioVacio = true;
+
+        for (i = 0; i < 10; i++) {
+            if (palabras[i] != null) {
+                diccionarioVacio = false;
+                break;
+            }
+        }
+
+        if (diccionarioVacio){
             System.out.println("No has llenado tu diccionario de palabras.");
             emptyA();
         }
         else{
-            System.out.println("Estas son las palabras almacenadas en tu diccionario personal:");
-            for (int i = 0; i < 10; i++) {
-                System.out.println((i + 1) + ": " + palabras[i]); //Igual...
-                //Solo hice static el array de palabras porque se hará uso de eso que es externo aquí.
+            System.out.println("\nEstas son las palabras almacenadas en tu diccionario personal:");
+            for (i = 0; i < 10; i++) {
+                if (palabras[i] != null) {
+                    System.out.println((i + 1) + ": " + palabras[i]);
+                }
             }
-        }
 
-        /*
-        solicitar al usuario que capture la palabra de la cual necesita su significado; si el usuario indica una palabra
-        que no se encuentre en la lista, el programa deberá mostrar un mensaje donde se indique que la palabra no existe,
-        en caso contrario, se deberá mostrar el significado de la palabra (segundo vector).
-         */
+            System.out.println("Ingresa textualmente la palabra a la que quieras dar un significado.");
+            Scanner darSignificadoScanner = new Scanner(System.in);
+            String palabraElegida = darSignificadoScanner.next();
 
-        //Buscar la palabra, revisar si tiene significado ya o no y ponérselo, seguir revisando mañana.
-        System.out.println("Ingresa textualmente la palabra a la que quieras dar un significado.");
-        Scanner darSignificadoScanner =  new Scanner(System.in);
-        String palabraElegida = darSignificadoScanner.next();
+            boolean palabraEncontrada = false;
 
+            for (i = 0; i < 10; i++) {
+                if (palabraElegida.equalsIgnoreCase(palabras[i])) {
+                    palabraEncontrada = true;
+                    System.out.println("Se encontró la palabra: \"" + palabras[i] + "\"" + ". Ingresa su significado.");
 
-        for (int i = 0; i < 10; i++) {
-            if (palabraElegida.equalsIgnoreCase(palabras[i])) {
-                //Acciones específicas para la palabra encontrada en la posición i
-                System.out.println("Se encontró la palabra: " + "\"" + palabras[i] + "\"");
-
-                Scanner sigScanner = new Scanner(System.in);
-                    System.out.println("Ingresa el significado de la palabra " + "\"" + palabras[i] + "\"" + ":"); //Despliega la palabra directamente
+                    Scanner sigScanner = new Scanner(System.in);
                     significados[i] = sigScanner.next();
-                System.out.println("Significado de la palabra " + palabras[i] + " procesado. Elige una opción.\n" +
-                        "a. Ingresar otro significado.\n" +
-                        "b. Regresar al menú.");
 
-                char otroSigScanner = sigScanner.next().toLowerCase().charAt(0);
-                if(otroSigScanner == 'a'){
-                    buscarCapturarSignificadosB();
+                    System.out.println("Significado de la palabra \"" + palabras[i] + "\" procesado. Elige o sal con otra tecla:\n" +
+                            "a. Ingresar otro significado.\n" +
+                            "b. Regresar al menú.");
+
+                    char opcion = sigScanner.next().toLowerCase().charAt(0);
+                    if (opcion == 'a'){
+                        buscarCapturarSignificadosB();
+                    }
+                    else if (opcion == 'b') {
+                        CLI.launchMenuDiccionario();
+                        break;
+                    }
+                    else {
+                        System.out.println();
+                        CLI.launchMenuDiccionario();
+                    }
                 }
-                else if(otroSigScanner == 'b'){
-                    CLI.launchMenuDiccionario();
-                }
-
-                if(!palabraElegida.equalsIgnoreCase(palabras[i])){
-                    System.out.println("Teclea una palabra que esté presente, por favor.");
-                    buscarCapturarSignificadosB();
-                }
-
-            }//if dentro de for
-
-        }//for
-
-    }
-
-    public static void detallarC(){ //Falta retocar, el ciclo for puede dar problemas, quiero que salga el print primero en caso de ser validada
-                                    //la opción, y que si no es válida, saque un mensaje de error y redirija, el ciclo for ostruye eso un poco.
-        // Imprimir palabra, definición y num de letras de cada palabra
-        for (int i = 0; i < 10; i++) {
-            if (palabras[i] != null && significados[i] != null) {
-                int numeroLetras = palabras[i].length();
-                System.out.println((i + 1) + ": " + palabras[i] + " - "  + significados[i] + " - " + numeroLetras + ".");
             }
-            else if(palabras[i] == null || significados[i] == null){
-                CLI.launchMenuDiccionario();
+
+            if (!palabraEncontrada) {
+                System.out.println("Teclea una palabra que esté presente, por favor.");
+                buscarCapturarSignificadosB();
             }
         }
-
     }
 
+    public static void detallarC() { //Opción C, detalles
+        for (i = 0; i < 10; i++) {
+            if (palabras[i] != null && significados[i] != null) {
+                int numLetras1 = palabras[i].length();
+                int numLetras2 = significados[i].length();
+                System.out.printf("\nPalabra %d: %s. %d letras.   -   Significado: %s. %d letras.",
+                        (i + 1), palabras[i], numLetras1, significados[i], numLetras2);
+                System.out.println();
+                //Es lo mismo que  System.out.println("Palabra " + (i + 1) + ": " + palabras[i] + ". "  + numLetras1 + " letras. - " + "Sig: "
+                //                                    + significados[i] + ". " + numLetras2 + " letras de significado.");
+                //Formato de la cadena:
+                //%d: Indica un valor numérico (en este caso, (i + 1)).
+                //%s: Indica una cadena (en este caso, palabras[i] y significados[i]).
+                //%n: Indica un salto de línea.
+
+            } else if (palabras[i] == null || significados[i] == null) {
+                System.out.println("Asegúrate de recabar los datos necesarios primero.");
+                CLI.launchMenuDiccionario();
+                break;
+            }
+        }
+        System.out.println();
+        CLI.launchMenuDiccionario();
+    }
 
     public static void emptyA(){ //Si se selecciona B y A no ha sido llenado.
         try (Scanner emptyAScanner = new Scanner(System.in)) {
@@ -116,14 +131,5 @@ public class Diccionario {
         }
         //Cierra el Scanner manualmente
     }
-
-    public static void filledA(){
-
-    }
-
-    public static void palabraElegida(){
-
-    }
-
 
 }
