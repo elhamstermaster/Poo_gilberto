@@ -1,9 +1,9 @@
-package edu_gilberto_heredia.reto3.ui;
+package edu_gilberto_heredia.reto3.pt1.ui;
 
-import edu_gilberto_heredia.reto3.process.Diccionario;
+import edu_gilberto_heredia.reto3.pt1.process.Diccionario;
 
 import java.util.Scanner;
-
+//
 public class CLI {
     public static void launchMenuDiccionario(){ //Arrancar el diccionario y opciones
         System.out.println("""
