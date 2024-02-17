@@ -1,43 +1,31 @@
 package edu_gilberto_heredia.reto4.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Boletos {
-    private int num;
-    private int numeroPasajero;
+    private List<Integer> numBoletos;
 
-    // Constructor
-    public Boletos(int num, int numeroPasajero) {
-        this.num = num;
-        this.numeroPasajero = numeroPasajero;
+    public Boletos() {
+        this.numBoletos = new ArrayList<>();
     }
 
-    // Getter para obtener el número de boletos
-    public int getNum() {
-        return num;
+    public void agregarBoletos(int num) {
+        this.numBoletos.add(num);
     }
 
-    // Setter para establecer el número de boletos
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    // Getter para obtener el número de pasajero
-    public int getNumeroPasajero() {
-        return numeroPasajero;
-    }
-
-    // Setter para establecer el número de pasajero
-    public void setNumeroPasajero(int numeroPasajero) {
-        this.numeroPasajero = numeroPasajero;
-    }
-
-    // Método para procesar la lista de boletos
-    public static void procesarListaBoletos(ArrayList<Boletos> listaBoletos) {
-        // Aquí puedes realizar operaciones con la lista de boletos según sea necesario
-        for (Boletos boleto : listaBoletos) {
-            System.out.println("Pasajero: " + boleto.getNumeroPasajero() + ", Número de boletos: " + boleto.getNum());
-            // Realiza otras operaciones según sea necesario
+    public void procesarListaBoletos() {
+        for (int i = 0; i < numBoletos.size(); i++) {
+            System.out.println("Número de boletos: " + numBoletos.get(i));
         }
+    }
+
+    public int getNumBoletos() {
+        return numBoletos.size() > 0 ? numBoletos.get(numBoletos.size() - 1) : 0;
+    }
+
+    // Nuevo método para obtener la lista completa de boletos
+    public List<Integer> getListaBoletos() {
+        return new ArrayList<>(numBoletos);
     }
 }
