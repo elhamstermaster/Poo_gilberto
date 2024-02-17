@@ -9,9 +9,11 @@ public class CLI {
     //internamente.
     public static void launchProgVentaBoletos(){
         System.out.println("""
-                Venta de boletos de unidades de transporte. El costo actual de los boletos es de $1250.50 MXNA. Realizar venta de boleto
-                        B. Mostrar datos de la lista de ventas
-                        S. Finalizar programa""");
+                Venta de boletos de unidades de transporte. El costo actual de los boletos es de $1250.50 MXNA. 
+                ---------------------------
+                A. Realizar venta de boleto.
+                B. Mostrar datos de la lista de ventas.
+                S. Finalizar programa.""");
 
         //Leer opción
         Scanner opcionScanner = new Scanner(System.in);
@@ -34,11 +36,11 @@ public class CLI {
                 break;
             case 'S':
                 //Finalizar programa
-
+                System.out.println("Gracias por usar el programa, vuelva pronto.");
                 break;
             default:
                 //Al escribir una letra no válida
-                System.out.println("Escribe A, B o S. ");
+                System.out.println("Escribe A, B o S.");
                 launchProgVentaBoletos();
         }
 
