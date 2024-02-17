@@ -5,10 +5,12 @@ import edu_gilberto_heredia.reto4.data.Pasajeros;
 import edu_gilberto_heredia.reto4.data.Tickets;
 import edu_gilberto_heredia.reto4.ui.CLI;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Método de opción A, yendo de pasajero 1 y así, se solicitan, ingresan y guardan datos.
+ * Se toman en cuenta las clases de la carpeta de datos
+ */
 public class VentaBoletosA {
     private static int iNumPasajero = 1;
     private static Tickets tickets = new Tickets();
@@ -20,6 +22,7 @@ public class VentaBoletosA {
         System.out.printf("Comprador %d, ingrese su nombre: ", iNumPasajero);
         String nombreComprador = compradoresScanner.next();
 
+        //Clases de data
         Pasajeros comprador = new Pasajeros(nombreComprador);
         Boletos boletosComprador = new Boletos();
 
@@ -29,6 +32,7 @@ public class VentaBoletosA {
         boletosComprador.agregarBoletos(numBoletos);
 
         tickets.agregarPasajero(comprador, boletosComprador);
+        //Se muestra el ticket de importe del método de más adelante
         ticketImporte(nombreComprador, iNumPasajero);
 
         Scanner otroCompradorScanner = new Scanner(System.in);
@@ -43,10 +47,14 @@ public class VentaBoletosA {
             CLI.launchProgVentaBoletos();
         } else {
             System.out.println("Gracias por usar el programa, vuelva pronto.");
-            System.exit(0);
         }
     }
 
+    /**
+     * Importe de la operación individual
+     * @param nombreComprador
+     * @param iNumPasajero
+     */
     public static void ticketImporte(String nombreComprador, int iNumPasajero) {
         double precioTotal = tickets.getBoletos(iNumPasajero).getNumBoletos() * 1250.50;
         System.out.printf("""
@@ -58,7 +66,9 @@ public class VentaBoletosA {
                 """, nombreComprador, iNumPasajero, tickets.getBoletos(iNumPasajero).getListaBoletos(), precioTotal);
     }
 
-    // Nueva función para mostrar datos
+    /**
+     * //Nueva función para mostrar datos, para CLI
+     */
     public static void mostrarDatos() {
         System.out.println("Lista de pasajeros registrados:");
         tickets.mostrarListaPasajeros();
@@ -68,10 +78,13 @@ public class VentaBoletosA {
 
         for (int i = 1; i <= totalPasajeros; i++) {
             Boletos boletosComprador = tickets.getBoletos(i);
-            System.out.printf("Boletos del pasajero %d: %s\n", i, boletosComprador.getListaBoletos());
+            System.out.printf("Boletos del pasajero %d:\n", i);
+            boletosComprador.procesarListaBoletos();
         }
 
         System.out.println("Importe total de la lista de boletos: $" + importeTotal);
         System.out.println("Cantidad total de pasajeros registrados: " + totalPasajeros);
+
+
     }
 }

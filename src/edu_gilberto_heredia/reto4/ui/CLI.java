@@ -1,11 +1,14 @@
 package edu_gilberto_heredia.reto4.ui;
-
 import edu_gilberto_heredia.reto4.process.VentaBoletosA;
-
 import java.util.Scanner;
-
 public class CLI {
 
+    /**
+     * Método de opciones.
+     * En A se muestra la venta y se compra el boleto, al final se muestra el importe y descripción personal.
+     * En B se muestran los datos recabados de todos los pasajeros registrados.
+     * Con S se finaliza el programa, o desde otro método con cualquier otra tecla se finaliza.
+     */
     public static void launchProgVentaBoletos() {
         Scanner opcionScanner = new Scanner(System.in);
 
@@ -32,14 +35,15 @@ public class CLI {
                     break;
                 case 'S':
                     System.out.println("Gracias por usar el programa, vuelva pronto.");
-                    System.exit(0);
                 default:
                     System.out.println("Escribe A, B o S.");
             }
         } while (true);
     }
 
-    // Nueva función para mostrar datos
+    /**
+     * Nueva función para mostrar datos desde la clase de venta de boletos en process, se llama arriba
+     */
     private static void mostrarDatos() {
         VentaBoletosA.mostrarDatos();
     }

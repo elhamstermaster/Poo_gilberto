@@ -7,7 +7,7 @@ public class Main {
         try {
             CLI.launchProgVentaBoletos();
         } catch (Exception e) {
-            System.out.println("Error inesperado: " + e.getMessage());
+            System.out.println("Error inesperado... " + e.getMessage());
         }
     }
 }
