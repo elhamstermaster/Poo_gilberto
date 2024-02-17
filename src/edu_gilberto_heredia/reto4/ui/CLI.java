@@ -12,7 +12,7 @@ public class CLI {
     public static void launchProgVentaBoletos() {
         Scanner opcionScanner = new Scanner(System.in);
 
-        do {
+        {
             System.out.println("""
                     Venta de boletos de unidades de transporte. El costo actual de los boletos es de $1250.50 MXN.
                     ---------------------------
@@ -35,10 +35,11 @@ public class CLI {
                     break;
                 case 'S':
                     System.out.println("Gracias por usar el programa, vuelva pronto.");
+                    break;
                 default:
                     System.out.println("Escribe A, B o S.");
             }
-        } while (true);
+        }
     }
 
     /**
