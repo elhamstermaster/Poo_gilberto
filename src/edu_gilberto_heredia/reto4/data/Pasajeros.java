@@ -1,12 +1,12 @@
 package edu_gilberto_heredia.reto4.data;
-import java.util.List;
 
+import java.util.ArrayList;
 
-public class Pasajeros1 {
+public class Pasajeros {
     private String nombre;
 
-    //Constructor
-    public Pasajeros1(String nombre) {
+    // Constructor
+    public Pasajeros(String nombre) {
         this.nombre = nombre;
     }
 
@@ -21,9 +21,9 @@ public class Pasajeros1 {
     }
 
     // Método para procesar la lista de pasajeros
-    public static void procesarListaPasajeros(List<Pasajeros1> listaPasajeros) {
+    public static void procesarListaPasajeros(ArrayList<Pasajeros> listaPasajeros) {
         // Aquí puedes realizar operaciones con la lista de pasajeros según sea necesario
-        for (Pasajeros1 pasajero : listaPasajeros) {
+        for (Pasajeros pasajero : listaPasajeros) {
             System.out.println("Pasajero: " + pasajero.getNombre());
             // Realiza otras operaciones según sea necesario
         }

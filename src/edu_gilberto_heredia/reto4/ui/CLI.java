@@ -9,7 +9,7 @@ public class CLI {
     //internamente.
     public static void launchProgVentaBoletos(){
         System.out.println("""
-                Venta de boletos de unidades de transporte. El costo actual de los boletos es de $1250.50 MXNA. 
+                Venta de boletos de unidades de transporte. El costo actual de los boletos es de $1250.50 MXN.
                 ---------------------------
                 A. Realizar venta de boleto.
                 B. Mostrar datos de la lista de ventas.
