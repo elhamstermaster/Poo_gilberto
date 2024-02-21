@@ -1,6 +1,6 @@
 package edu_gilberto_heredia.reto5.ui;
 
-import static edu_gilberto_heredia.reto5.process.Medicamento.registrarIniciarSesion;
+import static edu_gilberto_heredia.reto5.process.Medicamentos.registrarIniciarSesion;
 
 public class CLI {
     public static void launchProgFarmacia(){
