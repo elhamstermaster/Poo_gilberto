@@ -1,48 +1,16 @@
 package edu_gilberto_heredia.reto5.process;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Medicamentos {
-    /*
-    Genera una clase llamada Medicamentos.
-    Declara sus atributos y métodos.
-    Haz acciones sobre el ArrayList para guardar los medicamentos, además de declarar atributos y métodos necesarios.
-     */
 
-    //Atributos de la clase de los medicamentos
-    private String nombreQuimico;
-    private String nombreGenerico;
-    private String nombreRegistrado;
-    private double precioPublico;
-    private double precioDeVenta;
-    private String tipoPresentacion;
-
-    //Constructor de la clase
-    public Medicamentos(String nombreQuimico, String nombreGenerico, String nombreRegistrado,
-                           double precioPublico, double precioDeVenta, String tipoPresentacion) {
-        this.nombreQuimico = nombreQuimico;
-        this.nombreGenerico = nombreGenerico;
-        this.nombreRegistrado = nombreRegistrado;
-        this.precioPublico = precioPublico;
-        this.precioDeVenta = precioDeVenta;
-        this.tipoPresentacion = tipoPresentacion;
-    }
-
-    public void mostrarInformacion() {
-        System.out.println("Nombre Químico: " + nombreQuimico);
-        System.out.println("Nombre Genérico: " + nombreGenerico);
-        System.out.println("Nombre Registrado: " + nombreRegistrado);
-        System.out.println("Precio Público: " + precioPublico);
-        System.out.println("Precio de Venta: " + precioDeVenta);
-        System.out.println("Tipo de Presentación: " + tipoPresentacion);
-    }
-
-
-    public static void registrarIniciarSesion(){
+    public static void registrarIniciarSesion(ArrayList<Medicamentos> listaMedicamentos) {
         Scanner userScanner = new Scanner(System.in);
         Scanner passwordScanner = new Scanner(System.in);
 
-        System.out.print("Ingrese primero un usuario: ");
+        System.out.print("Ingrese un usuario: ");
         String user = userScanner.next();
         System.out.print("Ahora ingrese lo que será su contraseña: ");
         String password = passwordScanner.next();
@@ -54,15 +22,72 @@ public class Medicamentos {
         System.out.print("Contraseña: ");
         String inputPassword = passwordScanner.next();
 
-        if(inputUser.equals(user) && inputPassword.equals(password)) {
+        if (inputUser.equals(user) && inputPassword.equals(password)) {
             System.out.println("Sesión aprobada, puede continuar.");
+            mostrarTodosLosMedicamentos(listaMedicamentos);
 
         } else {
             System.out.println("Usuario o contraseña incorrectos. Sesión no aprobada.");
-            registrarIniciarSesion();
+            registrarIniciarSesion(listaMedicamentos);
         }
     }
 
+    public static void mostrarTodosLosMedicamentos(ArrayList<Medicamentos> listaMedicamentos) {
+        //Mostrar información de todos los medicamentos en el ArrayList
+        for (Medicamentos medicamento : listaMedicamentos) {
+            medicamento.mostrarInformacion();
+            System.out.println("=============================");
+        }
+    }
 
+    public enum TipoPresentacion {
+        SOLIDAS,
+        SOLIDAS_SEMISOLIDAS,
+        SOLIDAS_LIQUIDAS
+    }
 
+    private String nombreQuimico;
+    private String nombreGenerico;
+    private String nombreRegistrado;
+    private double precioPublico;
+    private double precioDeVenta;
+    private TipoPresentacion tipoPresentacion;
+
+    public Medicamentos(String nombreQuimico, String nombreGenerico, String nombreRegistrado,
+                        double precioPublico, TipoPresentacion tipoPresentacion) {
+        this.nombreQuimico = nombreQuimico;
+        this.nombreGenerico = nombreGenerico;
+        this.nombreRegistrado = nombreRegistrado;
+        this.precioPublico = precioPublico;
+        this.tipoPresentacion = tipoPresentacion;
+        calcularPrecioVenta();
+    }
+
+    private void calcularPrecioVenta() {
+        double porcentajeAdicional = 0.0;
+
+        switch (tipoPresentacion) {
+            case SOLIDAS:
+                porcentajeAdicional = 0.09;
+                break;
+            case SOLIDAS_SEMISOLIDAS:
+                porcentajeAdicional = 0.12;
+                break;
+            case SOLIDAS_LIQUIDAS:
+                porcentajeAdicional = 0.13;
+                break;
+        }
+
+        precioDeVenta = precioPublico + (precioPublico * porcentajeAdicional);
+    }
+
+    public void mostrarInformacion() {
+        System.out.println("Nombre Químico: " + nombreQuimico);
+        System.out.println("Nombre Genérico: " + nombreGenerico);
+        System.out.println("Nombre Registrado: " + nombreRegistrado);
+        System.out.println("Precio Público: " + precioPublico);
+        System.out.println("Precio de Venta: " + precioDeVenta);
+        System.out.println("Tipo de Presentación: " + tipoPresentacion);
+    }
 }
+

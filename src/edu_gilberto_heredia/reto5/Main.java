@@ -1,28 +1,42 @@
 package edu_gilberto_heredia.reto5;
+
 import edu_gilberto_heredia.reto5.process.Medicamentos;
 import edu_gilberto_heredia.reto5.ui.CLI;
 
 import java.util.ArrayList;
 
 public class Main {
-    //Declaración declare un ArrayList del tipo de la clase Medicamentos
-    //y en otro lado acciones sobre el ArrayList para guardar los medicamentos, además de declarar atributos y métodos necesarios.
-    ArrayList<String> medicamentos = new ArrayList<>();
+    //Crear un ArrayList del tipo Medicamentos
+    public static ArrayList<Medicamentos> listaMedicamentos = new ArrayList<>();
 
     public static void main(String[] args) {
-        /* Crear una instancia de Medicamento utilizando el constructor
-        Medicamentos medicamento1 = new Medicamentos("Ibuprofeno", "Ibuprofeno Genérico", "Ibuprox",
-                5.99, 8.99, "Tabletas");
+        // Ejemplo de creación de medicamentos y agregarlos al ArrayList
+        Medicamentos medicamento1 = new Medicamentos("Bencenosulfonamida", "Polvo", "Sulfatiazol", 10.0, Medicamentos.TipoPresentacion.SOLIDAS);
+        Medicamentos medicamento2 = new Medicamentos("NombreQuimico2", "NombreGenerico2", "NombreRegistrado2", 15.2, Medicamentos.TipoPresentacion.SOLIDAS);
+        Medicamentos medicamento3 = new Medicamentos("NombreQuimico3", "NombreGenerico3", "NombreRegistrado3", 8.5, Medicamentos.TipoPresentacion.SOLIDAS);
 
-        // Invocar un método de la instancia para mostrar la información
-        medicamento1.mostrarInformacion();
+        Medicamentos medicamento4 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_SEMISOLIDAS);
+        Medicamentos medicamento5 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_SEMISOLIDAS);
+        Medicamentos medicamento6 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_SEMISOLIDAS);
 
-         */
+        Medicamentos medicamento7 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_LIQUIDAS);
+        Medicamentos medicamento8 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_LIQUIDAS);
+        Medicamentos medicamento9 = new Medicamentos("", "", "", 10.0, Medicamentos.TipoPresentacion.SOLIDAS_LIQUIDAS);
 
-        try {
-            CLI.launchProgFarmacia();
-        } catch (Exception e) {
-            System.out.println("Error inesperado... " + e.getMessage());
-        }
+        // Agregar medicamentos al ArrayList
+        listaMedicamentos.add(medicamento1);
+        listaMedicamentos.add(medicamento2);
+        listaMedicamentos.add(medicamento3);
+
+        listaMedicamentos.add(medicamento4);
+        listaMedicamentos.add(medicamento5);
+        listaMedicamentos.add(medicamento6);
+
+        listaMedicamentos.add(medicamento7);
+        listaMedicamentos.add(medicamento8);
+        listaMedicamentos.add(medicamento9);
+
+        CLI.launchProgFarmacia();
+
     }
 }
