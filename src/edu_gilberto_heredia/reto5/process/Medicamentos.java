@@ -1,8 +1,4 @@
-// Medicamentos.java
 package edu_gilberto_heredia.reto5.process;
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Medicamentos {
     public enum TipoPresentacion {
@@ -20,14 +16,14 @@ public class Medicamentos {
     private String registradoPor;
 
     public Medicamentos(String nombreQuimico, String nombreGenerico, String nombreRegistrado, double precioDeVenta,
-                        double precioPublico, TipoPresentacion tipoPresentacion) {
+                        double precioPublico, TipoPresentacion tipoPresentacion, String registradoPor) {
         this.nombreQuimico = nombreQuimico;
         this.nombreGenerico = nombreGenerico;
         this.nombreRegistrado = nombreRegistrado;
-        this.precioDeVenta = precioDeVenta;
+        this.precioDeVenta = calcularPrecioVenta(precioPublico, tipoPresentacion);
         this.precioPublico = precioPublico;
         this.tipoPresentacion = tipoPresentacion;
-        calcularPrecioVenta();
+        this.registradoPor = registradoPor;
     }
 
     public String getRegistradoPor() {
@@ -47,8 +43,8 @@ public class Medicamentos {
         System.out.println("Tipo de Presentación: " + tipoPresentacion);
     }
 
-    private void calcularPrecioVenta() {
-        double porcentajeAdicional = 0.0;
+    private double calcularPrecioVenta(double precioPublico, TipoPresentacion tipoPresentacion) {
+        double porcentajeAdicional;
 
         switch (tipoPresentacion) {
             case SOLIDAS:
@@ -60,8 +56,10 @@ public class Medicamentos {
             case LIQUIDAS:
                 porcentajeAdicional = 0.13;
                 break;
+            default:
+                throw new IllegalArgumentException("Tipo de presentación no válido.");
         }
 
-        precioDeVenta = precioPublico + (precioPublico * porcentajeAdicional);
+        return precioPublico + (precioPublico * porcentajeAdicional);
     }
 }

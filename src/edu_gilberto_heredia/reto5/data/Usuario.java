@@ -1,4 +1,3 @@
-// Usuario.java
 package edu_gilberto_heredia.reto5.data;
 
 import java.util.Scanner;
@@ -24,15 +23,12 @@ public class Usuario {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese un usuario: ");
-        String nombreUsuario = scanner.next();
+        String nombreUsuario = scanner.nextLine();
 
         System.out.print("Ahora ingrese una contraseña: ");
-        String contrasena = scanner.next();
+        String contrasena = scanner.nextLine();
 
         System.out.println("Se registró con éxito.");
-
-        // Cerrar el scanner
-        scanner.close();
 
         return new Usuario(nombreUsuario, contrasena);
     }
