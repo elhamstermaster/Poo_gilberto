@@ -13,6 +13,6 @@ public class PropiedadEnVenta {
 
 
     public String obtenerInformacion() {
-        return "Ubicación: " + ubicacionVenta + ", Precio: $" + precioVenta + ", Disponible: " + (disponibleVenta ? "Sí" : "No");
+        return "Ubicación: " + ubicacionVenta + ", Precio: $" + precioVenta + ". Disponible: " + (disponibleVenta ? "Sí" : "No");
     }
 }

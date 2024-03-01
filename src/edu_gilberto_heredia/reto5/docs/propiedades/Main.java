@@ -1,5 +1,5 @@
 package edu_gilberto_heredia.reto5.docs.propiedades;
-
+//
 import java.util.ArrayList;
 import java.util.Scanner;
 
