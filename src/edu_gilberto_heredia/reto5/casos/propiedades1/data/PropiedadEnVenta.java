@@ -1,4 +1,4 @@
-package edu_gilberto_heredia.reto5.docs.propiedades;
+package edu_gilberto_heredia.reto5.casos.propiedades1.data;
 
 public class PropiedadEnVenta {
     private String ubicacionVenta;
@@ -11,8 +11,8 @@ public class PropiedadEnVenta {
         this.disponibleVenta = disponibleVenta;
     }
 
-
     public String obtenerInformacion() {
-        return "Ubicación: " + ubicacionVenta + ", Precio: $" + precioVenta + ". Disponible: " + (disponibleVenta ? "Sí" : "No");
+        // Implementa la lógica para obtener información específica de la propiedad en venta
+        return "Información de Propiedad en Venta: " + ubicacionVenta + ", Precio: " + precioVenta;
     }
 }
