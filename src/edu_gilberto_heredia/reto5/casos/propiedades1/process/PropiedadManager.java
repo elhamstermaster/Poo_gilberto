@@ -6,6 +6,9 @@ import edu_gilberto_heredia.reto5.casos.propiedades1.data.PropiedadEnVenta;
 import java.util.ArrayList;
 
 public class PropiedadManager {
+    /**
+     *
+     */
 
     public ArrayList<PropiedadEnVenta> getPropiedadesEnVentaCercanas(String ubicacion) {
         // Implementar la lógica para obtener propiedades en venta cercanas

@@ -4,6 +4,9 @@ import edu_gilberto_heredia.reto5.casos.cuentahabiente2.data.Cuenta;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class CuentaHabientesBanco {
     private ArrayList<Cuenta> cuentas;
     private String cliente;

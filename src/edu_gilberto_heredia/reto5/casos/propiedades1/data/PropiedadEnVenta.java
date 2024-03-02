@@ -1,6 +1,9 @@
 package edu_gilberto_heredia.reto5.casos.propiedades1.data;
 
 public class PropiedadEnVenta {
+    /**
+     *
+     */
     private String ubicacionVenta;
     private double precioVenta;
     private boolean disponibleVenta;

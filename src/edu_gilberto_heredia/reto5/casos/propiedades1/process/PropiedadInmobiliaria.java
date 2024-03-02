@@ -6,6 +6,9 @@ import edu_gilberto_heredia.reto5.casos.propiedades1.data.PropiedadEnVenta;
 import java.util.ArrayList;
 
 public class PropiedadInmobiliaria {
+    /**
+     *
+     */
     private ArrayList<PropiedadEnVenta> propiedadesEnVenta;
     private ArrayList<PropiedadEnRenta> propiedadesEnRenta;
 
