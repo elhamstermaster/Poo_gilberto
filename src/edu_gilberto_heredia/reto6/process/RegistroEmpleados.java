@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Clase que maneja el registro de empleados y la generación de informes de nómina.
+ * Clase que maneja el registro de empleados y la generación de informes de nómina
  */
 public class RegistroEmpleados {
     /**
-     * Lista que almacena los datos de los empleados registrados.
+     * Lista que almacena los datos de los empleados registrados
      */
     private ArrayList<DatosEmpleados> Datos = new ArrayList<>(); // Declarar aquí el ArrayList
 

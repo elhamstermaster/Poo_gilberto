@@ -1,9 +1,9 @@
 package edu_gilberto_heredia.reto6;
 
 import edu_gilberto_heredia.reto6.process.RegistroEmpleados;
-
+//
 /**
- * Clase principal que contiene el método main para ejecutar el programa de generación de nómina.
+ * Clase principal que contiene el método main para ejecutar el programa de generación de nómina
  */
 public class Main {
     /**

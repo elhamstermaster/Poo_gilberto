@@ -1,11 +1,11 @@
 package edu_gilberto_heredia.reto6.data;
 
 /**
- * Clase que representa los datos de un empleado y calcula la nómina según la categoría.
+ * Clase que representa los datos de un empleado y calcula la nómina según la categoría
  */
 public class DatosEmpleados {
     /**
-     * Método que calcula la nómina del empleado según su categoría.
+     * Método que calcula la nómina del empleado según su categoría
      */
     public void calcularNominaEmpleado() {
         switch (categoria) {
