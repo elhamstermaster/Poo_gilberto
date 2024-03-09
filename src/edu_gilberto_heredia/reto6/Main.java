@@ -1,14 +1,21 @@
 package edu_gilberto_heredia.reto6;
 
-import edu_gilberto_heredia.reto6.data.DatosEmpleados;
-import edu_gilberto_heredia.reto6.ui.CLI;
+import edu_gilberto_heredia.reto6.process.RegistroEmpleados;
 
-import java.util.ArrayList;
-
+/**
+ * Clase principal que contiene el método main para ejecutar el programa de generación de nómina.
+ */
 public class Main {
-    private static ArrayList<DatosEmpleados> Datos = new ArrayList<>();
-
+    /**
+     * Método principal que inicia el programa. Crea una instancia de RegistroEmpleados y llama al método para registrar empleados.
+     * @param args Argumentos de la línea de comandos (no se utilizan en este programa).
+     */
     public static void main(String[] args) {
-        CLI.launchRegistroNomina();
+        // Crea una instancia de RegistroEmpleados
+        RegistroEmpleados registroEmpleados = new RegistroEmpleados();
+
+        // Llama al método registrarEmpleados en la instancia de RegistroEmpleados
+        registroEmpleados.registrarEmpleados();
     }
 }
+
