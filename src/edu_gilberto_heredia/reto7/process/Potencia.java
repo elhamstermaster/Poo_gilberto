@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase que representa la operación de potencia.
+ * Clase que representa la operación de potencia
  */
 public class Potencia extends Multiplicacion{
     /**

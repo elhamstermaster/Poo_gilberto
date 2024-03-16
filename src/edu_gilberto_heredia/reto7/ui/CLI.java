@@ -5,7 +5,7 @@ import edu_gilberto_heredia.reto7.process.*;
 import java.util.Scanner;
 
 /**
- * Clase que maneja la interfaz de línea de comandos (CLI) para la aplicación de la calculadora.
+ * Clase que maneja la interfaz de línea de comandos (CLI) para la aplicación de la calculadora
  */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);

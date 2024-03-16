@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase abstracta que define una operación aritmética básica.
+ * Clase abstracta que define una operación aritmética básica
  */
 public abstract class OperacionAritmetica {
     /**

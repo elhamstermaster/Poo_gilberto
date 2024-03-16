@@ -1,6 +1,6 @@
 package edu_gilberto_heredia.reto7.process;
 /**
- * Clase que representa la operación de módulo.
+ * Clase que representa la operación de módulo
  */
 public class Modulo extends Resta {
     /**

@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase que representa la operación de raíz cuadrada.
+ * Clase que representa la operación de raíz cuadrada
  */
 public class Raiz extends OperacionAritmetica {
 

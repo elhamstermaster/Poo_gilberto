@@ -1,6 +1,6 @@
 package edu_gilberto_heredia.reto7.process;
 /**
- * Clase que representa la operación de multiplicación.
+ * Clase que representa la operación de multiplicación
  */
 public class Multiplicacion extends Suma{
     /**
