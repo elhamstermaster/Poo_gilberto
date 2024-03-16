@@ -4,7 +4,7 @@ import edu_gilberto_heredia.reto3.pt1.ui.CLI;
 
 import java.util.Scanner;
 
-//
+/** */
 public class Diccionario { //Clase del diccionario con respectivos métodos de opción y otro en caso de tener vacío el listado.
 
     public static String[] palabras = new String[10]; //Array de 10 casillas, contadas del 0 al 9.
@@ -13,6 +13,7 @@ public class Diccionario { //Clase del diccionario con respectivos métodos de o
 
     public static int i = 0;
 
+    /** */
     public static void enlistarPalabrasA() { //Opción A
         Scanner lectorPalabras = new Scanner(System.in);
         for (int i = 0; i < 10; i++) {
