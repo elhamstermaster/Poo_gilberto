@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase que representa la operación de resta
+ * Clase que representa la operación de resta.
  */
 public class Resta extends OperacionAritmetica {
     /**

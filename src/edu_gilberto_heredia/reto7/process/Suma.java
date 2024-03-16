@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase que representa la operación de suma
+ * Clase que representa la operación de suma.
  */
 public class Suma extends OperacionAritmetica {
     /**

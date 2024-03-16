@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto7.process;
 
 /**
- * Clase que representa la operación de logaritmo
+ * Clase que representa la operación de logaritmo.
  */
 public class Logaritmo extends Multiplicacion {
     /**
