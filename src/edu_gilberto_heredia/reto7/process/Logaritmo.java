@@ -1,6 +1,16 @@
 package edu_gilberto_heredia.reto7.process;
-//
+
+/**
+ * Clase que representa la operación de logaritmo.
+ */
 public class Logaritmo extends Multiplicacion {
+    /**
+     * Calcula el logaritmo de un número entero en una base dada.
+     * @param a Argumento del logaritmo.
+     * @param b Base del logaritmo.
+     * @return Logaritmo entero del argumento en la base especificada.
+     * @throws ArithmeticException si el argumento es menor o igual a 1 o si la base es menor o igual a 0.
+     */
     @Override
     public int calcular(int a, int b) {
         if (a <= 1 || b <= 0) throw new ArithmeticException(

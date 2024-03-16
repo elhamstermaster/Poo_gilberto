@@ -1,10 +1,16 @@
 package edu_gilberto_heredia.reto7.process;
-//
+
+/**
+ * Clase que representa la operación de raíz cuadrada.
+ */
 public class Raiz extends OperacionAritmetica {
 
-    public Raiz() {
-    }
-
+    /**
+     * Calcula la raíz cuadrada entera de un número entero.
+     * @param a Número del cual se calculará la raíz.
+     * @param b Este parámetro se ignora, es usado para mantener la consistencia en la interfaz.
+     * @return Raíz cuadrada entera del número.
+     */
     @Override
     public int calcular(int a, int b) {
         int resultado = 0;

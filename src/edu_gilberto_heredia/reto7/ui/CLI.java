@@ -4,9 +4,15 @@ import edu_gilberto_heredia.reto7.process.*;
 
 import java.util.Scanner;
 
+/**
+ * Clase que maneja la interfaz de línea de comandos (CLI) para la aplicación de la calculadora.
+ */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Muestra el menú de bienvenida y llama al método para mostrar el menú de la calculadora.
+     */
     public static void mostrarMenuBienvenida() {
         System.out.println("""
                 -----CALCULADORA ARITMÉTICA-----
@@ -23,6 +29,9 @@ public class CLI {
         mostrarMenuCalculadora();
     }
 
+    /**
+     * Muestra el menú de la calculadora y recoge la entrada del usuario.
+     */
     public static void mostrarMenuCalculadora() {
         System.out.println("Operación aritmética:");
         char operacion = scanner.next().charAt(0);
@@ -37,6 +46,10 @@ public class CLI {
         }
     }
 
+    /**
+     * Realiza la operación aritmética seleccionada por el usuario.
+     * @param operacion Operación aritmética seleccionada.
+     */
     private static void realizarOperacion(char operacion) {
         int a, b;
         if (operacion != 'g' && operacion != 'h') {
@@ -100,6 +113,11 @@ public class CLI {
         }
     }
 
+    /**
+     * Obtiene un número entero válido del usuario.
+     * @param mensaje Mensaje que solicita el número al usuario.
+     * @return Número entero ingresado por el usuario.
+     */
     private static int obtenerNumero(String mensaje) {
         System.out.println(mensaje);
         while (!scanner.hasNextInt()) {
@@ -107,9 +125,5 @@ public class CLI {
             scanner.next();
         }
         return scanner.nextInt();
-    }
-
-    public static void main(String[] args) {
-        mostrarMenuBienvenida();
     }
 }

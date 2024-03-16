@@ -1,6 +1,14 @@
 package edu_gilberto_heredia.reto7.process;
-//
+/**
+ * Clase que representa la operación de multiplicación.
+ */
 public class Multiplicacion extends Suma{
+    /**
+     * Calcula la multiplicación de dos números enteros.
+     * @param a Primer número.
+     * @param b Segundo número.
+     * @return Multiplicación de los dos números.
+     */
     @Override
     public int calcular(int a, int b) {
         int multiplicacion = 0;
