@@ -1,6 +1,12 @@
 package edu_gilberto_heredia.reto8.ui;
 
+/**
+ * Clase que define los textos en inglés para la interfaz de usuario
+ */
 public class Ingles extends Textos {
+    /**
+     * Constructor que inicializa los textos en inglés.
+     */
     public Ingles() {
         menu = """
                  -----ARITHMETIC CALCULATOR-----
@@ -20,6 +26,8 @@ public class Ingles extends Textos {
         valorY = "Enter the second value: ";
         argumento = "Enter the value of the argument: ";
         base = "Enter the value of the base:";
+        radical = "Enter the value of the radical: ";
+        radicando = "Enter the value of the radicand: ";
         resultado = "The result of your operation is: ";
         operacionNoValida = "Invalid operation";
         error = "Error while performing the operation: ";

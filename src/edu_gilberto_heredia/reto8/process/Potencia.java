@@ -11,7 +11,7 @@ public class Potencia extends Multiplicacion {
      * @param a Base.
      * @param b Exponente.
      * @return Resultado de la potencia.
-     * @throws ArithmeticException si el exponente es negativo.
+     * @throws ArithmeticException si el exponente es negativo
      */
     @Override
     public int calcular(int a, int b, Textos textos) {

@@ -1,37 +1,36 @@
 package edu_gilberto_heredia.reto8.ui;
 
-
-
 import edu_gilberto_heredia.reto7.process.*;
 
 import java.util.Scanner;
 
-
+/**
+ * Esta clase proporciona una interfaz de línea de comandos para interactuar con las operaciones aritméticas
+ */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
 
-    //Elección de idiomas
-        public static void elegirIdioma() {
-            System.out.println("""
-                    Selecciona el idioma del programa.
-                    Select the language of the program.
-                    a. Español.
-                    b. English.""");
+    /**
+     * Permite al usuario elegir el idioma del programa e inicia la aplicación.
+     */
+    public static void elegirIdioma() {
+        System.out.println("""
+                Selecciona el idioma del programa.
+                Select the language of the program.
+                a. Español.
+                b. English.""");
 
-            char idioma = scanner.next().charAt(0);
+        char idioma = scanner.next().charAt(0);
 
-            if (idioma == 'a') {
-                espanol();
-            } else if (idioma == 'b') {
-                english();
-            } else {
-                System.out.println("Idioma no reconocido. Language not recognized.");
-                CLI.elegirIdioma();
-            }
-
-
+        if (idioma == 'a') {
+            espanol();
+        } else if (idioma == 'b') {
+            english();
+        } else {
+            System.out.println("Idioma no reconocido. Language not recognized.");
+            CLI.elegirIdioma();
         }
-
+    }
 
     private static void espanol() {
         Textos textos = new Espanol();
@@ -68,14 +67,13 @@ public class CLI {
             a = obtenerNumero(textos.valorX, textos);
             b = obtenerNumero(textos.valorY, textos);
         } else if (operacion == 'g') {
-            a = obtenerNumero(textos.argumento, textos);
-            b = 0;
+            a = obtenerNumero(textos.radical, textos);
+            b = obtenerNumero(textos.radicando, textos);
         } else { // Logaritmo
             a = obtenerNumero(textos.argumento, textos);
             System.out.println(textos.base);
             b = scanner.nextInt();
         }
-
 
         OperacionAritmetica calculadora = null;
         switch (operacion) {
@@ -133,9 +131,4 @@ public class CLI {
         }
         return scanner.nextInt();
     }
-
-
-
 }
-
-

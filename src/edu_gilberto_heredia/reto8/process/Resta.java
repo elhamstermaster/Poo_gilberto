@@ -3,7 +3,7 @@ package edu_gilberto_heredia.reto8.process;
 import edu_gilberto_heredia.reto8.ui.Textos;
 
 /**
- * Clase que representa la operación de resta.
+ * Clase que representa la operación de resta
  */
 public abstract class Resta extends OperacionAritmetica {
     /**

@@ -1,7 +1,12 @@
 package edu_gilberto_heredia.reto8.ui;
 
-
+/**
+ * Clase que define los textos en español para la interfaz de usuario
+ */
 public class Espanol extends Textos {
+    /**
+     * Constructor que inicializa los textos en español.
+     */
     public Espanol () {
         menu = """
                  -----CALCULADORA ARITMÉTICA-----
@@ -21,6 +26,8 @@ public class Espanol extends Textos {
         valorY = "Ingrese el segundo valor: ";
         argumento = "Ingrese el valor del argumento: ";
         base = "Ingrese el valor de la base:";
+        radical = "Ingrese el valor del radical: ";
+        radicando = "Ingrese el valor del radicando: ";
         resultado = "El resultado de su operación es: ";
         operacionNoValida = "Operación no válida";
         error = "Error al realizar la operación: ";

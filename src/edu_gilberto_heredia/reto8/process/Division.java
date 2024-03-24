@@ -11,7 +11,7 @@ public class Division extends Resta {
      * @param a Dividendo.
      * @param b Divisor.
      * @return Cociente de la división.
-     * @throws ArithmeticException si el divisor es cero.
+     * @throws ArithmeticException si el divisor es cero
      */
     @Override
     public int calcular(int a, int b, Textos textos) {
