@@ -7,7 +7,7 @@ import java.util.*;
 import static edu_gilberto_heredia.reto9.process.OrganizadorPalabras.organizarPalabras;
 
 /**
- * Clase que cuenta las palabras en un archivo de texto
+ * Clase que cuenta las palabras en un archivo de texto.
  */
 public class ContadorPalabras {
     /**

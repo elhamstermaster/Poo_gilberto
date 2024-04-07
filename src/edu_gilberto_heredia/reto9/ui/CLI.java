@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Clase que representa la interfaz de línea de comandos (CLI)
+ * Clase que representa la interfaz de línea de comandos (CLI).
  */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
