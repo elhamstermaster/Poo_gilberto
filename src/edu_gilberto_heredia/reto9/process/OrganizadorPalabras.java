@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto9.process;
 
 import java.util.*;
-
+//
 public class OrganizadorPalabras {
     public static List<Map.Entry<String, Integer>> organizarPalabras(Map<String, Integer> conteoPalabras) {
         List<Map.Entry<String, Integer>> listaPalabras = new ArrayList<>(conteoPalabras.entrySet());

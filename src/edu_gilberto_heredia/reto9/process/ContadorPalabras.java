@@ -12,7 +12,7 @@ public class ContadorPalabras {
 
         try {
             InputStream inputStream = ContadorPalabras.class.getClassLoader().getResourceAsStream
-                    ("resources/" + nombreArchivo);
+                    ("edu_gilberto_heredia/reto9/resources/" + nombreArchivo);
             if (inputStream != null) {
                 Scanner fileScanner = new Scanner(inputStream);
                 while (fileScanner.hasNext()) {
