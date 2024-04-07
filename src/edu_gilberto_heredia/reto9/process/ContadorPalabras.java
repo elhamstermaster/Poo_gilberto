@@ -6,7 +6,16 @@ import java.util.*;
 
 import static edu_gilberto_heredia.reto9.process.OrganizadorPalabras.organizarPalabras;
 
+/**
+ * Clase que cuenta las palabras en un archivo de texto
+ */
 public class ContadorPalabras {
+    /**
+     * Método que cuenta las palabras en un archivo de texto.
+     *
+     * @param nombreArchivo El nombre del archivo de texto.
+     * @return Una lista de pares (palabra, frecuencia) ordenada por frecuencia descendente.
+     */
     public static List<Map.Entry<String, Integer>> contarPalabras(String nombreArchivo) {
         Map<String, Integer> conteoPalabras = new HashMap<>();
 

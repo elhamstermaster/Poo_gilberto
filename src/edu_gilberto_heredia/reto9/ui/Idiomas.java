@@ -1,13 +1,27 @@
 package edu_gilberto_heredia.reto9.ui;
 
+/**
+ * Clase que define los menús en diferentes idiomas
+ */
 public class Idiomas {
 
-    private String MENU;
+    private String MENU; // Almacena el menú en el idioma correspondiente.
 
+    /**
+     * Constructor de la clase Idiomas.
+     *
+     * @param MENU El menú en el idioma correspondiente.
+     */
     public Idiomas(String MENU) {
         this.MENU = MENU;
     }
 
+    /**
+     * Método estático que obtiene una instancia de la clase Idiomas según el idioma seleccionado.
+     *
+     * @param idioma El idioma seleccionado ("ES" para español, "ENG" para inglés).
+     * @return Una instancia de Idiomas con el menú en el idioma correspondiente.
+     */
     public static Idiomas getInstance(String idioma) {
         switch (Idioma.valueOf(idioma)) {
             case ES:
@@ -33,10 +47,18 @@ public class Idiomas {
         }
     }
 
+    /**
+     * Método que devuelve el menú en el idioma correspondiente.
+     *
+     * @return El menú en el idioma correspondiente.
+     */
     public String getMenu() {
         return MENU;
     }
 
+    /**
+     * Enumeración que define los idiomas disponibles.
+     */
     enum Idioma {
         ES, ENG
     }

@@ -6,9 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Clase que representa la interfaz de línea de comandos (CLI)
+ */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Método que permite al usuario elegir el idioma.
+     */
     public static void elegirIdioma() {
         Scanner idiomaScanner = new Scanner(System.in);
 
@@ -67,13 +73,15 @@ public class CLI {
         }
     }
 
+    /**
+     * Método que inicia la aplicación.
+     */
     public static void launchApp() {
         elegirIdioma();
 
         String nombreArchivo = obtenerNombreArchivo();
         List<Map.Entry<String, Integer>> listaPalabras = ContadorPalabras.contarPalabras(nombreArchivo);
 
-        System.out.println("Las 10 palabras más repetidas en el libro son:");
         for (int i = 0; i < 10 && i < listaPalabras.size(); i++) {
             System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": " + listaPalabras.get(i).getValue());
         }
