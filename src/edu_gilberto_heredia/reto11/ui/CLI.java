@@ -5,9 +5,10 @@ import edu_gilberto_heredia.reto11.process.ContadorPalabras;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
- * Clase que representa la interfaz de línea de comandos (CLI).
+ * Clase que representa la interfaz de línea de comandos (CLI)
  */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
@@ -23,13 +24,13 @@ public class CLI {
                 1. Español / Spanish
                 2. Inglés / English""");
 
-        String idioma = obtenerIdiomaSelec(idiomaScanner);
+        String idioma = obtenerIdiomaSeleccionado(idiomaScanner);
 
         Idiomas idiomas = Idiomas.getInstance(idioma);
         System.out.println(idiomas.getMenu());
     }
 
-    private static String obtenerIdiomaSelec(Scanner idiomaScanner) {
+    private static String obtenerIdiomaSeleccionado(Scanner idiomaScanner) {
         int idiomaSeleccionado;
         try {
             idiomaSeleccionado = Integer.parseInt(idiomaScanner.nextLine());
@@ -106,17 +107,18 @@ public class CLI {
         System.out.println("\nLa palabra más larga del libro es: " + palabraMasLarga);
 
         // Encontrar la palabra más corta del libro
-        String palabraMasCorta = contador.encontrarPalabraMasCorta(nombreArchivo);
-        System.out.println("\nLa palabra más corta del libro es: " + palabraMasCorta);
+        System.out.println("\nLa palabra más corta del libro es: ");
+        String palabraMasCorta = ContadorPalabras.encontrarPalabraMasCorta(contador.contarPalabras(nombreArchivo).stream().map(Map.Entry::getKey).collect(Collectors.toList()));
+        System.out.println(palabraMasCorta != null ? palabraMasCorta : "N/A");
 
         // Verificar si hay palabras que empiecen y terminen con vocal y tengan al menos 5 letras
-        List<String> palabrasConVocalAlInicioYFinal = ContadorPalabras.palabrasConVocalAlInicioYFinal(nombreArchivo);
         System.out.println("\nPalabras que empiecen y terminen con vocal y tengan al menos 5 letras:");
+        List<String> palabras = contador.contarPalabras(nombreArchivo).stream().map(Map.Entry::getKey).collect(Collectors.toList());
+        List<String> palabrasConVocalAlInicioYFinal = ContadorPalabras.criterioVocales(palabras);
         if (!palabrasConVocalAlInicioYFinal.isEmpty()) {
             palabrasConVocalAlInicioYFinal.forEach(System.out::println);
         } else {
             System.out.println("No hay palabras que cumplan con esa condición.");
         }
-
     }
 }

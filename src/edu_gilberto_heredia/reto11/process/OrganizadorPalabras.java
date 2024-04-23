@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Clase que organiza las palabras según su frecuencia de aparición.
+ * Clase que organiza las palabras según su frecuencia de aparición
  */
 public class OrganizadorPalabras {
     /**

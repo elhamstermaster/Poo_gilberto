@@ -3,9 +3,10 @@ package edu_gilberto_heredia.reto11.process;
 import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * Clase que cuenta las palabras en un archivo de texto.
+ * Clase que cuenta las palabras en un archivo de texto
  */
 public class ContadorPalabras {
     /**
@@ -127,51 +128,18 @@ public class ContadorPalabras {
         return null;
     }
 
-    public String encontrarPalabraMasCorta(String nombreArchivo) {
-        try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("edu_gilberto_heredia/reto11/resources/" + nombreArchivo);
-            if (inputStream != null) {
-                Scanner fileScanner = new Scanner(inputStream);
-                return fileScanner.findAll("\\b[a-zA-Z]+\\b")
-                        .map(matchResult -> matchResult.group())
-                        .map(String::toLowerCase)
-                        .min(Comparator.comparingInt(String::length))
-                        .orElse(null);
-            } else {
-                System.out.println("Archivo no encontrado.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static String encontrarPalabraMasCorta(List<String> palabras) {
+        return palabras.stream()
+                .min(Comparator.comparingInt(String::length))
+                .orElse(null);
     }
 
-    /**
-     * Método que devuelve una lista de palabras que empiezan y terminan con vocal y tienen al menos 5 letras.
-     *
-     * @param nombreArchivo El nombre del archivo de texto.
-     * @return Una lista de palabras que cumplen con las condiciones especificadas.
-     */
-    public static List<String> palabrasConVocalAlInicioYFinal(String nombreArchivo) {
-        List<String> palabras = new ArrayList<>();
-        try {
-            InputStream inputStream = ContadorPalabras.class.getClassLoader().getResourceAsStream
-                    ("edu_gilberto_heredia/reto11/resources/" + nombreArchivo);
-            if (inputStream != null) {
-                Scanner fileScanner = new Scanner(inputStream);
-                fileScanner.findAll("\\b[aeiouAEIOU]\\w*[aeiouAEIOU]\\b")
-                        .map(String.class::cast)
-                        .map(String::toLowerCase)
-                        .filter(s -> s.length() >= 5)
-                        .distinct()
-                        .forEach(palabras::add);
-            } else {
-                System.out.println("Archivo no encontrado.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return palabras;
+    public static List<String> criterioVocales(List<String> palabras) {
+        return palabras.stream()
+                .filter(p -> p.matches("^[aeiouAEIOU].*[aeiouAEIOU]$") && p.length() >= 5)
+                .collect(Collectors.toList());
     }
+
+
 
 }

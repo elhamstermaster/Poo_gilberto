@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto11.ui;
 
 /**
- * Clase que define los menús en diferentes idiomas.
+ * Clase que define los menús en diferentes idiomas
  */
 public class Idiomas {
 

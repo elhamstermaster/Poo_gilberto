@@ -3,7 +3,7 @@ package edu_gilberto_heredia.reto11;
 import edu_gilberto_heredia.reto11.ui.CLI;
 
 /**
- * Clase principal que inicia la aplicación.
+ * Clase principal que inicia la aplicación
  */
 public class Main {
     /**
