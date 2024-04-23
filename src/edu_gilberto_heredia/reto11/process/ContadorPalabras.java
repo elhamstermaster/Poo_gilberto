@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Clase que cuenta las palabras en un archivo de texto
+ * Clase que cuenta las palabras en un archivo de texto.
  */
 public class ContadorPalabras {
     /**
@@ -141,7 +141,4 @@ public class ContadorPalabras {
                 .filter(p -> p.matches("^[aeiouAEIOU].*[aeiouAEIOU]$") && p.length() >= 5)
                 .collect(Collectors.toList());
     }
-
-
-
 }

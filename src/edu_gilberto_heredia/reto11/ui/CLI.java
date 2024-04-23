@@ -19,6 +19,7 @@ public class CLI {
     public static void elegirIdiomaYLibro() {
         Scanner idiomaScanner = new Scanner(System.in);
 
+        // Mostrar opciones de idioma
         System.out.println("""
                 Seleccione su idioma / Select your language:
                 1. Español / Spanish
@@ -26,12 +27,20 @@ public class CLI {
 
         String idioma = obtenerIdiomaSeleccionado(idiomaScanner);
 
+        // Obtener instancias de textos según el idioma seleccionado
         Idiomas.getInstance(idioma);
 
+        // Mostrar menú de libros
         mostrarMenuLibros();
+
+        // Obtener nombre del archivo del libro seleccionado
         String nombreArchivo = obtenerNombreArchivo();
+
+        // Iniciar la aplicación con el libro seleccionado
         launchApp(nombreArchivo);
     }
+
+    // Métodos auxiliares
 
     private static void mostrarMenuLibros() {
         System.out.println(Idiomas.MENU);
@@ -50,7 +59,7 @@ public class CLI {
             idiomaSeleccionado = Integer.parseInt(idiomaScanner.nextLine());
             return getIdioma(idiomaSeleccionado);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Opción inválida / Invalid option");
+            throw new IllegalArgumentException(Idiomas.ERROR);
         }
     }
 
@@ -61,7 +70,7 @@ public class CLI {
             case 2:
                 return "ENG"; // Inglés
             default:
-                throw new IllegalArgumentException("Idioma no disponible / Language not available");
+                throw new IllegalArgumentException(Idiomas.ERROR);
         }
     }
 
@@ -90,6 +99,8 @@ public class CLI {
 
     /**
      * Método que inicia la aplicación.
+     *
+     * @param nombreArchivo El nombre del archivo del libro seleccionado.
      */
     public static void launchApp(String nombreArchivo) {
         ContadorPalabras contador = new ContadorPalabras(); // Instanciar un objeto de la clase ContadorPalabras
@@ -103,33 +114,34 @@ public class CLI {
 
         // Contar y mostrar el total de vocales en el libro seleccionado
         long totalVocales = contador.contarVocales(nombreArchivo);
-        System.out.println("\nEl total de vocales en el libro es: " + totalVocales);
+        System.out.println(Idiomas.VOCALES + totalVocales);
 
         // Mostrar palabras que empiezan con vocal
-        System.out.println("\nPalabras que empiezan con vocal:");
+        System.out.println(Idiomas.VOCALES_INICIO);
         contador.imprimirPalabrasQueEmpiezanConVocal(nombreArchivo);
 
         // Mostrar palabras con número impar de letras
-        System.out.println("\nPalabras con número impar de letras:");
+        System.out.println(Idiomas.IMPAR);
         contador.imprimirPalabrasConNumeroImparDeLetras(nombreArchivo);
 
         // Encontrar la palabra más larga del libro
         String palabraMasLarga = contador.encontrarPalabraMasLarga(nombreArchivo);
-        System.out.println("\nLa palabra más larga del libro es: " + palabraMasLarga);
+        System.out.println(Idiomas.LARGA + palabraMasLarga);
 
         // Encontrar la palabra más corta del libro
-        System.out.println("\nLa palabra más corta del libro es: ");
+        System.out.println(Idiomas.CORTA);
         String palabraMasCorta = ContadorPalabras.encontrarPalabraMasCorta(contador.contarPalabras(nombreArchivo).stream().map(Map.Entry::getKey).collect(Collectors.toList()));
         System.out.println(palabraMasCorta != null ? palabraMasCorta : "N/A");
 
         // Verificar si hay palabras que empiecen y terminen con vocal y tengan al menos 5 letras
-        System.out.println("\nPalabras que empiecen y terminen con vocal y tengan al menos 5 letras:");
+        System.out.println(Idiomas.CINCO_LETRAS);
         List<String> palabras = contador.contarPalabras(nombreArchivo).stream().map(Map.Entry::getKey).collect(Collectors.toList());
         List<String> palabrasConVocalAlInicioYFinal = ContadorPalabras.criterioVocales(palabras);
         if (!palabrasConVocalAlInicioYFinal.isEmpty()) {
             palabrasConVocalAlInicioYFinal.forEach(System.out::println);
         } else {
-            System.out.println("No hay palabras que cumplan con esa condición.");
+            System.out.println(Idiomas.ERROR);
         }
     }
 }
+
