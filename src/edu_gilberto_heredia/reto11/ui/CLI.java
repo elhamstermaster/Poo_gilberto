@@ -8,15 +8,15 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
- * Clase que representa la interfaz de línea de comandos (CLI)
+ * Clase que representa la interfaz de línea de comandos (CLI).
  */
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Método que permite al usuario elegir el idioma.
+     * Método que permite al usuario elegir el idioma y el libro.
      */
-    public static void elegirIdioma() {
+    public static void elegirIdiomaYLibro() {
         Scanner idiomaScanner = new Scanner(System.in);
 
         System.out.println("""
@@ -26,8 +26,22 @@ public class CLI {
 
         String idioma = obtenerIdiomaSeleccionado(idiomaScanner);
 
-        Idiomas idiomas = Idiomas.getInstance(idioma);
-        System.out.println(idiomas.getMenu());
+        Idiomas.getInstance(idioma);
+
+        mostrarMenuLibros();
+        String nombreArchivo = obtenerNombreArchivo();
+        launchApp(nombreArchivo);
+    }
+
+    private static void mostrarMenuLibros() {
+        System.out.println(Idiomas.MENU);
+        System.out.println(Idiomas.LIBROS);
+        System.out.println(Idiomas.El_Hobbit);
+        System.out.println(Idiomas.El_principito);
+        System.out.println(Idiomas.El_Padrino);
+        System.out.println(Idiomas.Libro_1984);
+        System.out.println(Idiomas.Rebelion_en_la_granja);
+        System.out.println("--------------------------------");
     }
 
     private static String obtenerIdiomaSeleccionado(Scanner idiomaScanner) {
@@ -43,7 +57,7 @@ public class CLI {
     private static String getIdioma(int idiomaSeleccionado) {
         switch (idiomaSeleccionado) {
             case 1:
-                return "ES"; // Español
+                return "ESP"; // Español
             case 2:
                 return "ENG"; // Inglés
             default:
@@ -77,14 +91,11 @@ public class CLI {
     /**
      * Método que inicia la aplicación.
      */
-    public static void launchApp() {
-        elegirIdioma();
-
-        String nombreArchivo = obtenerNombreArchivo();
+    public static void launchApp(String nombreArchivo) {
         ContadorPalabras contador = new ContadorPalabras(); // Instanciar un objeto de la clase ContadorPalabras
 
         // Mostrar las palabras más frecuentes del libro seleccionado
-        System.out.println("Palabras más frecuentes:");
+        System.out.println(Idiomas.PALABRAS_MAS_USADAS + nombreArchivo);
         List<Map.Entry<String, Integer>> listaPalabras = contador.contarPalabras(nombreArchivo);
         for (int i = 0; i < 10 && i < listaPalabras.size(); i++) {
             System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": " + listaPalabras.get(i).getValue());

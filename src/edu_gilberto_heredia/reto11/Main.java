@@ -13,7 +13,7 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            CLI.launchApp(); // Llama al método para iniciar la aplicación en la interfaz de línea de comandos.
+            CLI.elegirIdiomaYLibro(); // Llama al método para iniciar la aplicación en la interfaz de línea de comandos.
         } catch (Exception e) {
             System.out.println("Error" + e); // Captura cualquier excepción y muestra un mensaje de error.
         }

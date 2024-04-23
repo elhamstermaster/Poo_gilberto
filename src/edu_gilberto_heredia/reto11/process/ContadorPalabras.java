@@ -23,11 +23,11 @@ public class ContadorPalabras {
                     ("edu_gilberto_heredia/reto11/resources/" + nombreArchivo);
             if (inputStream != null) {
                 Scanner fileScanner = new Scanner(inputStream);
+                fileScanner.useDelimiter("[^a-zA-Z]+"); // Delimitador para separar palabras
                 while (fileScanner.hasNext()) {
                     String palabra = fileScanner.next().toLowerCase();
                     palabra = Normalizer.normalize(palabra, Normalizer.Form.NFD).replaceAll
                             ("[^\\p{ASCII}]", ""); // Remover acentos
-                    palabra = palabra.replaceAll("[^a-zA-Z]", ""); // Remover caracteres no alfabéticos
                     if (!palabra.isEmpty()) {
                         conteoPalabras.put(palabra, conteoPalabras.getOrDefault(palabra, 0) + 1);
                     }
@@ -40,9 +40,11 @@ public class ContadorPalabras {
             e.printStackTrace();
         }
 
-        OrganizadorPalabras organizador = new OrganizadorPalabras();
-        return organizador.organizarPalabras(conteoPalabras);
+        return conteoPalabras.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toList());
     }
+
 
     /**
      * Método que cuenta el total de todas las vocales disponibles en el libro.
