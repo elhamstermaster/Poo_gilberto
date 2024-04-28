@@ -59,9 +59,9 @@ public class Idiomas {
                 Rebelion_en_la_granja = "5. Animal farm.";
                 INVALIDO = "Invalid option";
                 ERROR = "Unexpected error";
-                PALABRAS_MAS_USADAS = "Top 10 most repeated words in the book are:";
+                PALABRAS_MAS_USADAS = "Top 10 most repeated words in the book:";
                 VOCALES = "\nThe total number of vowels is: ";
-                VOCALES_INICIO = "\nThe words that start with a vowel are: ";
+                VOCALES_INICIO = "\nThe words that start with a vowel: ";
                 IMPAR = "\nWords with an odd number of letters:";
                 CORTA = "\nThe shortest word in the book is: ";
                 LARGA = "\nThe longest word in the book is: ";

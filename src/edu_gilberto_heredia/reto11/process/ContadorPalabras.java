@@ -73,11 +73,14 @@ public class ContadorPalabras {
      *
      * @param nombreArchivo El nombre del archivo de texto.
      */
-    public void imprimirPalabrasQueEmpiezanConVocal(String nombreArchivo) {
+    public void imprimirPalabrasQueEmpiezanConVocal(String nombreArchivo) throws IllegalArgumentException {
         try {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream("edu_gilberto_heredia/reto11/resources/" + nombreArchivo);
             if (inputStream != null) {
                 Scanner fileScanner = new Scanner(inputStream);
+                if (!fileScanner.hasNext()) {
+                    throw new IllegalArgumentException("El archivo está vacío");
+                }
                 fileScanner.findAll("\\b[aeiouAEIOU]\\w*")
                         .map(matchResult -> matchResult.group())
                         .map(String::toLowerCase)
@@ -88,9 +91,10 @@ public class ContadorPalabras {
                 System.out.println("Archivo no encontrado.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("Error al procesar el archivo", e);
         }
     }
+
 
     public void imprimirPalabrasConNumeroImparDeLetras(String nombreArchivo) {
         try {
