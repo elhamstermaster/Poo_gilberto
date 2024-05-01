@@ -1,7 +1,7 @@
 package edu_gilberto_heredia.reto11.ui;
 
 /**
- * Clase que define los menús en diferentes idiomas.
+ * Esta clase almacena los textos en diferentes idiomas para la interfaz de usuario.
  */
 public class Idiomas {
     public static String MENU;
@@ -21,11 +21,14 @@ public class Idiomas {
     public static String CORTA;
     public static String LARGA;
     public static String CINCO_LETRAS;
+    public static String NO_HAY_PALABRAS;
+    public static String CUMPLAN_CONDICION;
+    public static String PALABRA_ESPECIAL;
 
     /**
-     * Método que instancia las traducciones según el idioma seleccionado.
+     * Obtiene una instancia de los textos en el idioma seleccionado.
      *
-     * @param idioma El idioma seleccionado.
+     * @param idioma El idioma seleccionado por el usuario.
      */
     public static void getInstance(String idioma) {
         Textos opcion = Textos.valueOf(idioma);
@@ -47,6 +50,10 @@ public class Idiomas {
                 CORTA = "\nLa palabra más corta del libro es: ";
                 LARGA = "\nLa palabra más larga del libro es: ";
                 CINCO_LETRAS = "\nPalabras que empiecen y terminen con vocal y tengan al menos 5 letras:";
+                NO_HAY_PALABRAS = "\nNo se han encontrado palabras dentro del libro: ";
+                CUMPLAN_CONDICION = "que cumplan con esta condicion";
+                PALABRA_ESPECIAL = "\nLas palabras que empiecen y terminen con vocal; " +
+                        "y ademas tengan al menos 5 letras, en el libro: ";
                 break;
 
             case ENG:
@@ -56,27 +63,31 @@ public class Idiomas {
                 El_principito = "2. The little prince.";
                 El_Padrino = "3. El Padrino.";
                 Libro_1984 = "4. 1984.";
-                Rebelion_en_la_granja = "5. Animal farm.";
+                Rebelion_en_la_granja = "5. Animal Farm.";
                 INVALIDO = "Invalid option";
-                ERROR = "Unexpected error";
-                PALABRAS_MAS_USADAS = "Top 10 most repeated words in the book are:";
-                VOCALES = "\nThe total number of vowels is: ";
-                VOCALES_INICIO = "\nThe words that start with a vowel are: ";
+                ERROR = "Unexpected error ";
+                PALABRAS_MAS_USADAS = "The 10 most used words in the book ";
+                VOCALES = "\nThe total number of vowels in the book is: ";
+                VOCALES_INICIO = "\nWords that start with a vowel are: ";
                 IMPAR = "\nWords with an odd number of letters:";
                 CORTA = "\nThe shortest word in the book is: ";
                 LARGA = "\nThe longest word in the book is: ";
-                CINCO_LETRAS = "\nWords that start and end with a vowel and have at least five letters:";
+                CINCO_LETRAS = "\nWords starting and ending with a vowel and have at least 5 letters:";
+                NO_HAY_PALABRAS = "\nNo words were found within the book: ";
+                CUMPLAN_CONDICION = "that meet this condition";
+                PALABRA_ESPECIAL = "\nWords starting and ending with a vowel; " +
+                        "and also have at least 5 letters, in the book: ";
                 break;
+
             default:
-                throw new IllegalArgumentException(Idiomas.ERROR);
+                throw new IllegalArgumentException("Invalid language selection");
         }
     }
 
     /**
-     * Enumeración que define los posibles idiomas.
+     * Enumeración de las opciones de idioma disponibles.
      */
-    enum Textos {
+    private enum Textos {
         ESP, ENG
     }
 }
-
