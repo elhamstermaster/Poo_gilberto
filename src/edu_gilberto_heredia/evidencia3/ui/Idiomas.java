@@ -1,4 +1,4 @@
-package evidencia3.ui;
+package edu_gilberto_heredia.evidencia3.ui;
 
 public class Idiomas {
     public static String NOMBRES;
@@ -8,9 +8,9 @@ public class Idiomas {
     public static String GANADOR;
 
     /**
-     * Obtiene una instancia de los textos en el idioma seleccionado.
+     * Obtiene una instancia de los textos en el idioma seleccionado
      *
-     * @param idioma El idioma seleccionado por el usuario.
+     * @param idioma El idioma seleccionado por el usuario
      */
     public static void getInstance(String idioma) {
     Textos opcion = Textos.valueOf(idioma);

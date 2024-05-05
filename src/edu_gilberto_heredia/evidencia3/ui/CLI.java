@@ -1,4 +1,4 @@
-package evidencia3.ui;
+package edu_gilberto_heredia.evidencia3.ui;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ public class CLI {
 
     public static void mostrarMenuIdiomas() {
         System.out.println("""
-                -------------------------------------------------------------------------
+                --------------------------------------------------------------------------
                 Seleccione su idioma / Select your language / あなたが使う言語を選んでください:
                 ESP: Español / Spanish / スペイン語
                 ENG: Inglés / English / 英語
