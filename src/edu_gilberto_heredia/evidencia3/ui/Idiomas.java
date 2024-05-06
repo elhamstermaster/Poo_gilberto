@@ -1,11 +1,14 @@
 package edu_gilberto_heredia.evidencia3.ui;
 
 public class Idiomas {
+    public static String BIENVENIDA;
     public static String NOMBRES;
+    public static String SIMBOLOS;
     public static String INICIO_JUEGO;
-    public static String SIMBOLOS_DE_JUEGO;
     public static String JUGAR_DE_NUEVO;
     public static String GANADOR;
+    public static String POSICION_INVALIDA;
+    public static String EMPATE;
 
     /**
      * Obtiene una instancia de los textos en el idioma seleccionado
@@ -16,18 +19,23 @@ public class Idiomas {
     Textos opcion = Textos.valueOf(idioma);
         switch (opcion) {
             case ESP:
-                NOMBRES = "Elige tu nombre: \n";
-                INICIO_JUEGO = " ";
-                SIMBOLOS_DE_JUEGO = " ";
-                JUGAR_DE_NUEVO = " ";
+                BIENVENIDA = "¡Bienvenido al juego del gato!";
+                NOMBRES = "Elige tu nombre: ";
+                SIMBOLOS = "Elige tu propio símbolo, hay 10 disponibles: \n" +
+                        "@ # $ % & X 0 ? + =";
+                INICIO_JUEGO = "Perfecto, ingresa la fila y la columna (ejemplo: 1 2):";
+                JUGAR_DE_NUEVO = "¿Desea jugar de nuevo?";
                 GANADOR = " ";
+                POSICION_INVALIDA = "Posición inválida. Inténtalo de nuevo.";
+                EMPATE = "¡Empate!";
+
 
                 break;
 
             case ENG:
                 NOMBRES = "Choose your nickname: \n";
                 INICIO_JUEGO = " ";
-                SIMBOLOS_DE_JUEGO = " ";
+                SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
 
@@ -36,7 +44,7 @@ public class Idiomas {
             case JAP:
                 NOMBRES = " ";
                 INICIO_JUEGO = " ";
-                SIMBOLOS_DE_JUEGO = " ";
+                SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
 
