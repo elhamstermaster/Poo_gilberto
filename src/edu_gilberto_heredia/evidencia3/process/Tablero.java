@@ -3,13 +3,11 @@ package edu_gilberto_heredia.evidencia3.process;
 public class Tablero {
     private char[][] tablero;
 
-    // Constructor para inicializar el tablero
     public Tablero() {
         tablero = new char[3][3];
         reiniciarTablero();
     }
 
-    // Método para reiniciar el tablero
     public void reiniciarTablero() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -18,7 +16,6 @@ public class Tablero {
         }
     }
 
-    // Método para mostrar el tablero
     public void mostrarTablero() {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
@@ -31,7 +28,6 @@ public class Tablero {
         }
     }
 
-    // Método para colocar una marca en el tablero
     public boolean colocarMarca(int fila, int columna, char marca) {
         if (fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && tablero[fila][columna] == ' ') {
             tablero[fila][columna] = marca;
@@ -41,9 +37,7 @@ public class Tablero {
         }
     }
 
-    // Método para verificar si hay un ganador
     public boolean hayGanador() {
-        // Verificar filas y columnas
         for (int i = 0; i < 3; i++) {
             if (tablero[i][0] != ' ' && tablero[i][0] == tablero[i][1] && tablero[i][0] == tablero[i][2]) {
                 return true;
@@ -52,7 +46,6 @@ public class Tablero {
                 return true;
             }
         }
-        // Verificar diagonales
         if (tablero[0][0] != ' ' && tablero[0][0] == tablero[1][1] && tablero[0][0] == tablero[2][2]) {
             return true;
         }
@@ -62,7 +55,6 @@ public class Tablero {
         return false;
     }
 
-    // Método para verificar si el tablero está lleno (empate)
     public boolean tableroLleno() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

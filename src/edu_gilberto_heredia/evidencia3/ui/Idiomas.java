@@ -9,14 +9,10 @@ public class Idiomas {
     public static String GANADOR;
     public static String POSICION_INVALIDA;
     public static String EMPATE;
+    public static String JUGAR;
 
-    /**
-     * Obtiene una instancia de los textos en el idioma seleccionado
-     *
-     * @param idioma El idioma seleccionado por el usuario
-     */
     public static void getInstance(String idioma) {
-    Textos opcion = Textos.valueOf(idioma);
+        Textos opcion = Textos.valueOf(idioma);
         switch (opcion) {
             case ESP:
                 BIENVENIDA = "¡Bienvenido al juego del gato!";
@@ -28,8 +24,7 @@ public class Idiomas {
                 GANADOR = " ";
                 POSICION_INVALIDA = "Posición inválida. Inténtalo de nuevo.";
                 EMPATE = "¡Empate!";
-
-
+                JUGAR = "¿Qué modo deseas jugar? 1: IA / 2: 1v1"; // Se juega con la computadora por defecto
                 break;
 
             case ENG:
@@ -38,7 +33,7 @@ public class Idiomas {
                 SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
-
+                JUGAR = "";
                 break;
 
             case JAP:
@@ -47,19 +42,14 @@ public class Idiomas {
                 SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
-
+                JUGAR = ""; // Se juega con la computadora por defecto
                 break;
             default:
                 throw new IllegalArgumentException("Invalid language selection");
         }
     }
 
-    /**
-     * Enumeración de las opciones de idioma disponibles.
-     */
     private enum Textos {
         ESP, ENG, JAP
     }
-
-
 }
