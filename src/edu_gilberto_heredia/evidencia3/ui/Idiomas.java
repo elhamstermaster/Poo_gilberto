@@ -5,16 +5,25 @@ public class Idiomas {
     public static String NOMBRES;
     public static String SIMBOLOS;
     public static String INICIO_JUEGO;
+    public static String SIMBOLOS_DE_JUEGO;
     public static String JUGAR_DE_NUEVO;
     public static String GANADOR;
     public static String POSICION_INVALIDA;
     public static String EMPATE;
-    public static String JUGAR;
 
+    /**
+     * Obtiene una instancia de los textos en el idioma seleccionado
+     *
+     * @param idioma El idioma seleccionado por el usuario
+     */
     public static void getInstance(String idioma) {
         Textos opcion = Textos.valueOf(idioma);
         switch (opcion) {
             case ESP:
+                NOMBRES = "Elige tu nombre: \n";
+                INICIO_JUEGO = " ";
+                SIMBOLOS_DE_JUEGO = " ";
+                JUGAR_DE_NUEVO = " ";
                 BIENVENIDA = "¡Bienvenido al juego del gato!";
                 NOMBRES = "Elige tu nombre: ";
                 SIMBOLOS = "Elige tu propio símbolo, hay 10 disponibles: \n" +
@@ -24,31 +33,35 @@ public class Idiomas {
                 GANADOR = " ";
                 POSICION_INVALIDA = "Posición inválida. Inténtalo de nuevo.";
                 EMPATE = "¡Empate!";
-                JUGAR = "¿Qué modo deseas jugar? 1: IA / 2: 1v1"; // Se juega con la computadora por defecto
+
+
                 break;
 
             case ENG:
                 NOMBRES = "Choose your nickname: \n";
                 INICIO_JUEGO = " ";
+                SIMBOLOS_DE_JUEGO = " ";
                 SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
-                JUGAR = "";
-                break;
 
+                break;
             case JAP:
                 NOMBRES = " ";
                 INICIO_JUEGO = " ";
+                SIMBOLOS_DE_JUEGO = " ";
                 SIMBOLOS = " ";
                 JUGAR_DE_NUEVO = " ";
                 GANADOR = " ";
-                JUGAR = ""; // Se juega con la computadora por defecto
+
                 break;
             default:
                 throw new IllegalArgumentException("Invalid language selection");
         }
     }
-
+    /**
+     * Enumeración de las opciones de idioma disponibles.
+     */
     private enum Textos {
         ESP, ENG, JAP
     }
