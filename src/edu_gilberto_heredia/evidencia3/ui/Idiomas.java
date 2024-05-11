@@ -1,5 +1,7 @@
 package edu_gilberto_heredia.evidencia3.ui;
 
+//Está por cambiarse
+
 public class Idiomas {
     public static String BIENVENIDA;
     public static String NOMBRES;
@@ -14,10 +16,11 @@ public class Idiomas {
     /**
      * Obtiene una instancia de los textos en el idioma seleccionado
      *
-     * @param idioma El idioma seleccionado por el usuario
+     * @param //idioma El idioma seleccionado por el usuario
      */
+    /*
     public static void getInstance(String idioma) {
-        Textos opcion = Textos.valueOf(idioma);
+        edu_gilberto_heredia.oldevidencia3.ui.Idiomas.Textos opcion = edu_gilberto_heredia.oldevidencia3.ui.Idiomas.Textos.valueOf(idioma);
         switch (opcion) {
             case ESP:
                 NOMBRES = "Elige tu nombre: \n";
@@ -62,6 +65,7 @@ public class Idiomas {
     /**
      * Enumeración de las opciones de idioma disponibles.
      */
+
     private enum Textos {
         ESP, ENG, JAP
     }
