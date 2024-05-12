@@ -1,16 +1,20 @@
 package edu_gilberto_heredia.evidencia3.data;
 
+/**Importamos las funciones Map y HashMap, de la libreria until de java, para poder usarlas.*/
 import java.util.HashMap;
 import java.util.Map;
 
+/**Esta clase nos permite crear un salon de la fama del juego miestras la aplicacion este activa.*/
 public class SalonDeLaFama {
     private static final int MAX_JUGADORES = 5;
     private Map<String, Integer> jugadores;
 
+    /**Definimos el constructor del salon de la fama*/
     public SalonDeLaFama(){
         this.jugadores = new HashMap<>();
     }
 
+    /**Este metodo nos permite actualizar el salon de la fama.*/
     public void actualizar(String nombreGanador){
         if (!jugadores.containsKey(nombreGanador)) {
             if (jugadores.size() < MAX_JUGADORES) {
@@ -28,6 +32,7 @@ public class SalonDeLaFama {
         }
     }
 
+    /**Este metodo sirve para mostar el salon de la fama.*/
     public void mostrar() {
         System.out.println("Salón de la Fama:");
         jugadores.entrySet().stream()

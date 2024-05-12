@@ -1,7 +1,12 @@
 package edu_gilberto_heredia.evidencia3.process;
 
+/**Aquí importamos la clase Idiomas, para poder realizar las */
+import edu_gilberto_heredia.evidencia3.ui.Idiomas;
+
+/**Aquí importamos la función random, para poder utilizarla*/
 import java.util.Random;
 
+/**En esta clase definimos como se definen los turnos de la computadora.*/
 public class JuegoComputadora {
     private char simbolo;
 
@@ -11,6 +16,11 @@ public class JuegoComputadora {
         this.simbolo = simbolo;
     }
 
+    public char getSimbolo() {
+        return this.simbolo;
+    }
+
+    /**Este método sirve para que la computadora genere una posición random en el tablero para colocar su símbolo.*/
     public void jugarTurno(char[][] tablero) {
         Random random = new Random();
         int fila, columna;
@@ -20,6 +30,8 @@ public class JuegoComputadora {
         } while (tablero[fila][columna] != '-');
 
         tablero[fila][columna] = simbolo;
-        System.out.println("La computadora ha jugado en la posición [" + fila + "][" + columna + "]");
+        fila = fila + 1;
+        columna = columna + 1;
+        System.out.println(Idiomas.COMPUTADORA_HA_JUGADO + fila + "][" + columna + "]");
     }
 }
